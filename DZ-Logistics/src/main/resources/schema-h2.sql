@@ -6,12 +6,6 @@ create table Headquarters (
     addressId INT
 );
 
-create table FreitTrucks (
-	truckId INT AUTO_INCREMENT,
-	routeId INT,
-    statusId INT
-);
-
 create table DeliveryTrucks (
 	truckId INT AUTO_INCREMENT,
     headquarterId INT,
