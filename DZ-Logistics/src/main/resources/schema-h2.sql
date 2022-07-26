@@ -9,7 +9,7 @@ create table Headquarters (
 create table FreitTrucks (
 	truckId INT AUTO_INCREMENT,
 	routeId INT,
-    statusId INT NOT_NULL
+    statusId INT
 );
 
 create table DeliveryTrucks (
@@ -21,7 +21,7 @@ create table DeliveryTrucks (
 
 create table Routes (
 	routeId INT AUTO_INCREMENT,
-    truckId Int
+    truckId INT
 );
 
 create table Packages (

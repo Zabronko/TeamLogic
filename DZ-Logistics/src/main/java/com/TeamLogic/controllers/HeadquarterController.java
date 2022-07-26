@@ -12,6 +12,7 @@ import com.TeamLogic.repositories.HeadquarterRepository;
 
 @RestController
 @RequestMapping("/headquarters")
+//@CrossOrigin(origins = "*")
 public class HeadquarterController {
 
 	@Autowired
