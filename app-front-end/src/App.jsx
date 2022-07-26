@@ -11,23 +11,17 @@ function App() {
   <Navigation>
       <Nav.Item>
         <Nav.Link href="/">Home</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+
         <Nav.Link href="/Customers">Customers</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+
         <Nav.Link href="/CustomerInfo">CustomerInfo </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+
         <Nav.Link href="/Headquarters">Headquarters</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+
         <Nav.Link href="/HeadquartersInfo">HeadquartersInfo</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+ 
         <Nav.Link href="/ShippingRoutes">ShippingRoutes</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
+
         <Nav.Link href="/RoutesInfo">RoutesInfo</Nav.Link>
       </Nav.Item>
     </Navigation>
