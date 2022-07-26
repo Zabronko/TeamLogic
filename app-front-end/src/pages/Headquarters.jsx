@@ -1,6 +1,7 @@
+import { HeadquartersList } from "../components/HeadquartersList"
 
 export const Headquarters = () => {
   return (
-    <div>Headquarters</div>
+    < HeadquartersList />
   )
 }
