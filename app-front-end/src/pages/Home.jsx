@@ -1,7 +1,11 @@
-import React from 'react'
+import { Card } from "react-bootstrap"
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <Card>
+        <Card.Body>
+           Home
+        </Card.Body>
+    </Card>
   )
 }

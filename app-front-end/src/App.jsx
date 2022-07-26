@@ -1,12 +1,36 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Customers, CustomerInfo, Headquarters, HeadquartersInfo, Home, ShippingRoutes, RoutesInfo} from "./pages"
+import { Nav } from 'react-bootstrap';
+import { Navigation } from './components/Navigation';
 
-import './App.css';
 
 function App() {
   return (
 <>
 <BrowserRouter>
+  <Navigation>
+      <Nav.Item>
+        <Nav.Link href="/">Home</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/Customers">Customers</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/CustomerInfo">CustomerInfo </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/Headquarters">Headquarters</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/HeadquartersInfo">HeadquartersInfo</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/ShippingRoutes">ShippingRoutes</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/RoutesInfo">RoutesInfo</Nav.Link>
+      </Nav.Item>
+    </Navigation>
 
     <Routes>
         <Route path="/" element={<Home />} />
