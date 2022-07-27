@@ -12,13 +12,17 @@ import javax.persistence.Table;
 public class Status {
 
 	@Id
-	@Column(name="Status")
+	@Column(name="statusId")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int Id;
 	
 	@Column(name="status")
 	private String status;
 
+	public Status() {
+		super();
+	}
+	
 	public Status(String status) {
 		super();
 		this.status = status;

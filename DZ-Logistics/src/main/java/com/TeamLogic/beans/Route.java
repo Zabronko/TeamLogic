@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,8 +18,12 @@ public class Route {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int Id;
 	
-	@OneToOne(mappedBy="route")
+	@OneToOne()
+	@JoinColumn(name="truckId")
 	private Truck truck;
+	
+	// TODO
+	// List<Package> packages
 
 	public Route() {
 		super();
@@ -47,7 +52,7 @@ public class Route {
 
 	@Override
 	public String toString() {
-		return "Route [Id=" + Id + ", truck=" + truck + "]";
+		return "Route [Id=" + Id + "]";
 	}
 	
 }

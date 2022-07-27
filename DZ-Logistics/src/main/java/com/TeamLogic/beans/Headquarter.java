@@ -1,10 +1,13 @@
 package com.TeamLogic.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity()
@@ -21,6 +24,9 @@ public class Headquarter {
 	
 	@Column(name="state")
 	private String state;
+	
+	@OneToMany(mappedBy="headquarter")
+	private List<Truck> trucks;
 
 	public Headquarter() {
 		super();
@@ -58,7 +64,7 @@ public class Headquarter {
 
 	@Override
 	public String toString() {
-		return "Headquarter [id=" + id + ", city=" + city + ", state=" + state + "]";
+		return "Headquarter [id=" + id + ", city=" + city + ", state=" + state + ", trucks=" + trucks + "]";
 	}
 	
 }

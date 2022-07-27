@@ -14,24 +14,24 @@ insert into Headquarters (city, state) values ('Phoenix', 'AZ');
 -- unpopulated for now
 
 -- delivery trucks
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (null, 1, 1);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (1, 2, 1);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (6, 2, 2);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (7, 2, 2);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (9, 2, 3);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (10, 2, 3);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (13, 2, 4);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (14, 2, 4);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (15, 2, 5);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (16, 2, 5);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (null, 1, 6);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (23, 2, 6);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (24, 2, 7);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (25, 2, 7);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (null, 1, 8);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (29, 2, 8);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (null, 1, 9);
-insert into DeliveryTrucks (routeId, statusId, headquarterId) values (null, 1, 9);
+insert into DeliveryTrucks (statusId, headquarterId) values (1, 1);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 1);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 2);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 2);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 3);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 3);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 4);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 4);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 5);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 5);
+insert into DeliveryTrucks (statusId, headquarterId) values (1, 6);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 6);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 7);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 7);
+insert into DeliveryTrucks (statusId, headquarterId) values (1, 8);
+insert into DeliveryTrucks (statusId, headquarterId) values (2, 8);
+insert into DeliveryTrucks (statusId, headquarterId) values (1, 9);
+insert into DeliveryTrucks (statusId, headquarterId) values (1, 9);
 
 -- routes
 insert into Routes (truckId) values (2);
@@ -131,7 +131,7 @@ insert into Customers (name, addressId) values ('Junina Gobert', 25);
 
 -- status
 insert into Status (status) values ('Idle');
-insert into Status (status) values ('driving');
+insert into Status (status) values ('Driving');
 
 -- addresses
 insert into Addresses (address) values ('32410 Bay Plaza');

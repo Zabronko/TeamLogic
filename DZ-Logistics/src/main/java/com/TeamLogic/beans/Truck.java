@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="DeliveryTrucks")
 public class Truck {
@@ -23,13 +25,14 @@ public class Truck {
 	@JoinColumn(name="headquarterId")
 	private Headquarter headquarter;
 	
-	@OneToOne()
-	@JoinColumn(name="routeId")
+	@OneToOne(mappedBy="truck")
+	@JsonIgnore
 	private Route route;
 	
 	@OneToOne()
 	@JoinColumn(name="statusId")
 	private Status status;
+	
 
 	public Truck() {
 		super();
@@ -65,7 +68,7 @@ public class Truck {
 	public void setRoute(Route route) {
 		this.route = route;
 	}
-
+	
 	public Status getStatus() {
 		return status;
 	}
@@ -76,7 +79,7 @@ public class Truck {
 
 	@Override
 	public String toString() {
-		return "Truck [Id=" + Id + ", headquarter=" + headquarter + ", route=" + route + ", status=" + status + "]";
+		return "Truck [Id=" + Id + "]";
 	}
 	
 }
