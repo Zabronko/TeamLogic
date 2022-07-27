@@ -20,7 +20,7 @@ public class Address {
 	
 	
 	@Column(name="address")
-	private int address;
+	private String address;
 
 
 	public Address() {
@@ -28,7 +28,7 @@ public class Address {
 	}
 
 
-	public Address(int id, int address) {
+	public Address(int id, String address) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -45,12 +45,12 @@ public class Address {
 	}
 
 
-	public int getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
 
-	public void setAddress(int address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 

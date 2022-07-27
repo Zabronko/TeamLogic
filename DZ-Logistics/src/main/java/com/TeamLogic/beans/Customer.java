@@ -19,20 +19,20 @@ public class Customer {
 	private int id;
 	
 	@Column(name="name")
-	private int name;
+	private String name;
 	
 	// need to map to addresses @OnetoOne
-	private Address address;
+	//private Address address;
 
 	public Customer() {
 		super();
 	}
 
-	public Customer(int id, int name) {
+	public Customer(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.address = new Address();
+		//this.address = new Address();
 	}
 
 	public int getId() {
@@ -43,25 +43,19 @@ public class Customer {
 		this.id = id;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", address=" + address + "]";
+		return "Customer [id=" + id + ", name=" + name +"]";
 	}
 	
 
