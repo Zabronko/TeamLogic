@@ -19,19 +19,32 @@ public class Customer {
 	private int id;
 	
 	@Column(name="name")
-	private int name;
+	private String name;
 	
+<<<<<<< HEAD
 	private String address;
+=======
+	// need to map to addresses @OnetoOne
+	//private Address address;
+>>>>>>> b740c337935109843ae9bb5ba8e78346207c6108
 
 	public Customer() {
 		super();
 	}
 
+<<<<<<< HEAD
 	public Customer(int id, int name, String address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
+=======
+	public Customer(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+		//this.address = new Address();
+>>>>>>> b740c337935109843ae9bb5ba8e78346207c6108
 	}
 
 	public int getId() {
@@ -42,14 +55,15 @@ public class Customer {
 		this.id = id;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
+<<<<<<< HEAD
 	public String getAddress() {
 		return address;
 	}
@@ -57,10 +71,13 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+=======
+
+>>>>>>> b740c337935109843ae9bb5ba8e78346207c6108
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", address=" + address + "]";
+		return "Customer [id=" + id + ", name=" + name +"]";
 	}
 	
 
