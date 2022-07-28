@@ -1,16 +1,15 @@
-import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 export const Warehouse = ({warehouse}) => {
 
     const history = useNavigate();
 
-    const handleClick = () => {
-        history(window.location.href + `${warehouse.id}`)
+    const handleClick = async() => {
+        history(`./${warehouse.id}`)
     }
 
     return (
-        <tr onClick={handleClick()}>    
+        <tr onClick={handleClick}>    
             <td>{warehouse.id}</td>
             <td>{warehouse.city}</td>
             <td>{warehouse.state}</td>

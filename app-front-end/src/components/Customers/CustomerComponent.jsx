@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
-import { CustomerIndividual } from './CustomerIndividual';
 
 export const CustomerComponent = () => {
     const [customers, setCustomers] = useState([]);

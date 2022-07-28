@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -30,8 +31,13 @@ public class Truck {
 	@JsonIgnore
 	private Warehouse warehouse;
 	
+	@JoinColumn(name="type")
+	private String type;
+	
+	@JoinColumn(name="capacity")
+	private int capacity;
+	
 	@OneToMany(mappedBy="truck")
-	@JsonIgnore
 	private List<Package> packages;
 	
 	
@@ -73,10 +79,36 @@ public class Truck {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public List<Package> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(List<Package> packages) {
+		this.packages = packages;
+	}
+	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String toString() {
-		return "Truck [Id=" + Id + "]";
+		return "Truck [Id=" + Id + ", type=" + type + ", capacity=" + capacity + "]";
 	}
 	
 }

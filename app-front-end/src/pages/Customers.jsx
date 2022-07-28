@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card"
-import { CustomerComponent } from "../components/CustomerComponent"
-import { AddCustomer } from "../components/AddCustomer"
+import { CustomerComponent } from '../components/Customers/CustomerComponent'
+import { AddCustomer } from "../components/Customers/AddCustomer"
 
 export const Customers = () => {
   return (

@@ -21,9 +21,6 @@ function App() {
       <Nav.Item>
         <Nav.Link href="/Warehouses">Warehouses</Nav.Link>
       </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/WarehouseInfo">WarehouseInfo</Nav.Link>
-      </Nav.Item>
     </Navigation>
 
     <Routes>
@@ -31,7 +28,7 @@ function App() {
         <Route path="/Customers" element={<Customers />} />
         <Route path ="/CustomerInfo" element={<CustomerInfo />}></Route>
         <Route path ="/Warehouses" element={<Warehouses />}></Route>
-        <Route path ="/WarehouseInfo" element={<WarehouseInfo />}></Route>
+        <Route path ="/Warehouses/*" element={<WarehouseInfo />}></Route>
     </Routes>
 </BrowserRouter>
 </>

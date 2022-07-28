@@ -19,7 +19,8 @@ create table Warehouses (
 
 create table Trucks (
 	truckId INT AUTO_INCREMENT Primary Key,
-	type VARCHAR(50),
+	type VARCHAR(50) not null DEFAULT('Delivery'),
+	capacity INT not null DEFAULT(50),
     warehouseId INT not null,
     statusId INT not null,
     
@@ -30,7 +31,7 @@ create table Trucks (
 
 create table Packages (
 	packageId INT AUTO_INCREMENT Primary Key,
-	description VARCHAR(50),
+	description VARCHAR(50) not null DEFAULT('none'),
 	warehouseId INT,
     truckId INT,
     customerId INT not null,
