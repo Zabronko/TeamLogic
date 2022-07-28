@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.TeamLogic.beans.Customer;
 import com.TeamLogic.repositories.CustomerRepository;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/customers")
@@ -33,6 +33,7 @@ public class CustomerController {
 	
 	@PostMapping
 	public Customer save(@RequestBody Customer customer) {
+		//Customer customer = new Customer("test","test","test","TX");
 		return repository.save(customer);
 	}
 
