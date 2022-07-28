@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table } from 'react-bootstrap'
+import { Table, Card} from 'react-bootstrap'
 import { Warehouse } from './Warehouse'
 import axios from 'axios'
 
@@ -17,8 +17,9 @@ export const WarehouseList = () => {
     }
 
     return (
-        <>
-            <Table striped bordered hover>
+        <Card style={{width:"80%", marginLeft:"10%", borderRadius:"25px", border:"2px solid LightGray", alignItems:"center"}}>
+            <h1 style={{alignText:"center"}}>Warehouses</h1>
+            <Table striped bordered hover className="warehouses">
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -34,6 +35,6 @@ export const WarehouseList = () => {
                     })}
                 </tbody>
             </Table>
-        </>
+        </Card>
     );
 }
