@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
+import { CustomerIndividual } from './CustomerIndividual';
 
 export const CustomerComponent = () => {
     const [customers, setCustomers] = useState([]);
@@ -21,7 +22,18 @@ export const CustomerComponent = () => {
                 </tr>
             </thead>
             <tbody>
+            {customers.map((customer) => {
+                    return (
+                    // <CustomerIndividual key={customers.id} customer={customer} customers={requests} setCustomers={setCustomers}/>
+                    <tr key={customer.id}>
+                        <td>{customer.id}</td>
+                        <td>{customer.address}</td>
+                        <td>{customer.city}</td>
+                        <td>{customer.state}</td>
 
+                    </tr>
+                    );
+                })}
             </tbody>
 
         </Table>
