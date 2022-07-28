@@ -7,7 +7,7 @@ export const CustomerComponent = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/Customers')
+        axios.get('http://localhost:8080/customers')
         .then(res => setCustomers(res.data));
     },[]);
   

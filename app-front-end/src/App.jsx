@@ -13,25 +13,25 @@ function App() {
         <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/Customers">Customers</Nav.Link>
+        <Nav.Link href="/customers">Customers</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/CustomerInfo">CustomerInfo </Nav.Link>
+        <Nav.Link href="/customerInfo">CustomerInfo </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/Warehouses">Warehouses</Nav.Link>
+        <Nav.Link href="/warehouses">Warehouses</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/WarehouseInfo">WarehouseInfo</Nav.Link>
+        <Nav.Link href="/warehouseInfo">WarehouseInfo</Nav.Link>
       </Nav.Item>
     </Navigation>
 
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Customers" element={<Customers />} />
-        <Route path ="/CustomerInfo" element={<CustomerInfo />}></Route>
-        <Route path ="/Warehouses" element={<Warehouses />}></Route>
-        <Route path ="/WarehouseInfo" element={<WarehouseInfo />}></Route>
+        <Route path="/customers" element={<Customers />} />
+        <Route path ="/customerInfo" element={<CustomerInfo />}></Route>
+        <Route path ="/warehouses" element={<Warehouses />}></Route>
+        <Route path ="/warehouseInfo" element={<WarehouseInfo />}></Route>
     </Routes>
 </BrowserRouter>
 </>
