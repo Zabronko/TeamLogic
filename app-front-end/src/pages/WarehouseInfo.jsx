@@ -1,6 +1,7 @@
 import { WarehouseOverview } from "../components/Warehouses/WarehouseOverview"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {Card} from 'react-bootstrap'
 
 export const WarehouseInfo = () => {
 
@@ -16,9 +17,9 @@ export const WarehouseInfo = () => {
 
   if(warehouse.id!==undefined) {
     return (
-      <>
+      <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
         <WarehouseOverview warehouse={warehouse}/>
-      </>
+      </Card>
     )
   }
 }
