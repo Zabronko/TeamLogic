@@ -8,12 +8,13 @@ export const WarehouseOverview = ({warehouse}) => {
 
     return (
         <>
+        <h1 style={{textAlign:"center"}}>Warehouse:  {warehouse.city},{warehouse.state}</h1>
         <Card style={{border:"none",width:"90%", marginLeft:"5%", alignContent:"center"}}>
-            <h1 style={{textAlign:"center"}}>Trucks</h1>
+            <h2 style={{textAlign:"center"}}>Trucks</h2>
             <TruckList trucks={warehouse.trucks} warehouse={warehouse}/>
         </Card>
         <Card style={{border:"none",width:"90%", marginLeft:"5%", alignContent:"center"}}>
-            <h1 style={{textAlign:"center"}}>Packages</h1>
+            <h2 style={{textAlign:"center"}}>Packages</h2>
             <PackageList packages={warehouse.packages} warehouse={warehouse}/>
         </Card>
         </>
