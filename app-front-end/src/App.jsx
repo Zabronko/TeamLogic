@@ -16,16 +16,13 @@ function App() {
         <Nav.Link href="/customers">Customers</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/customerInfo">CustomerInfo </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
         <Nav.Link href="/warehouses">Warehouses</Nav.Link>
       </Nav.Item>
     </Navigation>
 
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Customers" element={<Customers />} />
+        <Route path="/Customers/*" element={<Customers />} />
         <Route path ="/CustomerInfo" element={<CustomerInfo />}></Route>
         <Route path ="/Warehouses" element={<Warehouses />}></Route>
         <Route path ="/Warehouses/*" element={<WarehouseInfo />}></Route>

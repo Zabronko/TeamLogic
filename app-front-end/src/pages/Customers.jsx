@@ -3,6 +3,8 @@ import { CustomerComponent } from '../components/Customers/CustomerComponent'
 import { AddCustomer } from "../components/Customers/AddCustomer"
 
 export const Customers = () => {
+
+
   return (
     <>
     <Card>
