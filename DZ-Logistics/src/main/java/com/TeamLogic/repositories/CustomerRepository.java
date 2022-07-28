@@ -8,5 +8,6 @@ import com.TeamLogic.beans.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+	
 
 }

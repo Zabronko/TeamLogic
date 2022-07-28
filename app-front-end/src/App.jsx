@@ -13,13 +13,13 @@ function App() {
         <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/Customers">Customers</Nav.Link>
+        <Nav.Link href="/customers">Customers</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/CustomerInfo">CustomerInfo </Nav.Link>
+        <Nav.Link href="/customerInfo">CustomerInfo </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/Warehouses">Warehouses</Nav.Link>
+        <Nav.Link href="/warehouses">Warehouses</Nav.Link>
       </Nav.Item>
     </Navigation>
 

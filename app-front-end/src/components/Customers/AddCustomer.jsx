@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import axios from "axios";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +12,25 @@ export const AddCustomer = () => {
     const cityRef = useRef();
     const stateRef = useRef();
 
-    const handleSubmit = async (event) => {}
+    const handleSubmit = async (event) => {
+        try {
+        event.preventDefault();
+        await axios.post('http://localhost:8080/customers',
+        {
+            name: nameRef.current.value,
+            address: addressRef.current.value,
+            city: cityRef.current.value,
+            state: stateRef.current.value
+        }
+        );
+        nameRef.current.value = null;
+        addressRef.current.value = null;
+        cityRef.current.value = null;
+        stateRef.current.value = null;
+        } catch(err) {
+            console.error(err);
+        }
+    }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -22,7 +41,7 @@ export const AddCustomer = () => {
         </Col>
         <Col>
             <Form.Label >Address:</Form.Label>
-            <Form.Control name="reason" ref={addressRef} required placeholder='Enter Address of Customer' />
+            <Form.Control name="address" ref={addressRef} required placeholder='Enter Address of Customer' />
         </Col>
         <Col>
             <Form.Label >City:</Form.Label>

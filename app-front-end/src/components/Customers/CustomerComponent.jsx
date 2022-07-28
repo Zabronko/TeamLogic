@@ -6,7 +6,7 @@ export const CustomerComponent = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/Customers')
+        axios.get('http://localhost:8080/customers')
         .then(res => setCustomers(res.data));
     },[]);
   
@@ -25,7 +25,7 @@ export const CustomerComponent = () => {
                     return (
                     // <CustomerIndividual key={customers.id} customer={customer} customers={requests} setCustomers={setCustomers}/>
                     <tr key={customer.id}>
-                        <td>{customer.id}</td>
+                        <td>{customer.name}</td>
                         <td>{customer.address}</td>
                         <td>{customer.city}</td>
                         <td>{customer.state}</td>
