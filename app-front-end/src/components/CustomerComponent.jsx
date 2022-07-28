@@ -16,6 +16,8 @@ export const CustomerComponent = () => {
                 <tr>
                     <th>Name</th>
                     <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
                 </tr>
             </thead>
             <tbody>
