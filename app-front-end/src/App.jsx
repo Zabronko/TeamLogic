@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Customers, CustomerInfo, Headquarters, HeadquartersInfo, Home, ShippingRoutes, RoutesInfo} from "./pages"
+import {Customers, CustomerInfo, Warehouses, WarehouseInfo, Home} from "./pages"
 import { Nav } from 'react-bootstrap';
 import { Navigation } from './components/Navigation';
 
@@ -19,16 +19,10 @@ function App() {
         <Nav.Link href="/CustomerInfo">CustomerInfo </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/Headquarters">Headquarters</Nav.Link>
+        <Nav.Link href="/Warehouses">Warehouses</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/HeadquartersInfo">HeadquartersInfo</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/ShippingRoutes">ShippingRoutes</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/RoutesInfo">RoutesInfo</Nav.Link>
+        <Nav.Link href="/WarehouseInfo">WarehouseInfo</Nav.Link>
       </Nav.Item>
     </Navigation>
 
@@ -36,10 +30,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Customers" element={<Customers />} />
         <Route path ="/CustomerInfo" element={<CustomerInfo />}></Route>
-        <Route path ="/Headquarters" element={<Headquarters />}></Route>
-        <Route path ="/HeadquartersInfo" element={<HeadquartersInfo />}></Route>
-        <Route path ="/ShippingRoutes" element={<ShippingRoutes />}></Route>
-        <Route path ="/RoutesInfo" element={<RoutesInfo />}></Route>
+        <Route path ="/Warehouses" element={<Warehouses />}></Route>
+        <Route path ="/WarehouseInfo" element={<WarehouseInfo />}></Route>
     </Routes>
 </BrowserRouter>
 </>

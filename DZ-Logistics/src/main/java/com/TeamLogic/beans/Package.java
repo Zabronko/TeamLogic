@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity()
 @Table(name="Packages")
 public class Package {
@@ -24,10 +26,12 @@ public class Package {
 	
 	@OneToOne()
 	@JoinColumn(name="warehouseId")
+	@JsonIgnore
 	private Warehouse warehouse;
 	
 	@OneToOne()
 	@JoinColumn(name="truckId")
+	@JsonIgnore
 	private Truck truck;
 	
 	@ManyToOne()
@@ -94,8 +98,7 @@ public class Package {
 
 	@Override
 	public String toString() {
-		return "Package [id=" + id + ", description=" + description + ", warehouse=" + warehouse + ", truck=" + truck
-				+ ", customer=" + customer + "]";
+		return "Package [id=" + id + ", description=" + description + ", customer=" + customer + "]";
 	}
 	
 	

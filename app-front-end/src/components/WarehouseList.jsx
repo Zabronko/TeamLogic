@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { Table } from 'react-bootstrap'
-import { Headquarter } from "./Headquarter";
+import { Warehouse } from './Warehouse'
+import axios from 'axios'
 
-export const HeadquartersList = () => {
+export const WarehouseList = () => {
 
-    const [headquarters, setHeadquarters] = useState([]);
+    const [warehouses, setWarehouses] = useState([]);
 
     useEffect(() => {
         getData();
     },[]);
 
     const getData = async() => {
-        const res = await fetch('http://localhost:8080/headquarters');
-        const promise = res.json();
-        Promise.resolve(promise)
-        .then(value=> setHeadquarters(value));
+        const res = await axios.get('http://localhost:8080/warehouses');
+        setWarehouses(res.data);
     }
 
     return (
@@ -25,11 +24,13 @@ export const HeadquartersList = () => {
                         <td>ID</td>
                         <td>City</td>
                         <td>State</td>
+                        <td>Number of Trucks</td>
+                        <td>Number of Packages</td>
                     </tr>
                 </thead>
                 <tbody>
-                    {headquarters.map((headquarter) => {
-                        return < Headquarter key={headquarter.id} headquarter={headquarter} />
+                    {warehouses.map((warehouse) => {
+                        return < Warehouse key={warehouse.id} warehouse={warehouse} />
                     })}
                 </tbody>
             </Table>

@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity()
 @Table(name = "Warehouses")
@@ -64,10 +67,26 @@ public class Warehouse {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	public List<Truck> getTrucks() {
+		return trucks;
+	}
+
+	public void setTrucks(List<Truck> trucks) {
+		this.trucks = trucks;
+	}
+
+	public List<Package> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(List<Package> packages) {
+		this.packages = packages;
+	}
 
 	@Override
 	public String toString() {
-		return "Headquarter [id=" + id + ", city=" + city + ", state=" + state + ", trucks=" + trucks + "]";
+		return "Headquarter [id=" + id + ", city=" + city + ", state=" + state + "]";
 	}
 	
 }

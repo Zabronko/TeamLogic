@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="DeliveryTrucks")
+@Table(name="Trucks")
 public class Truck {
 
 	@Id
@@ -24,9 +27,11 @@ public class Truck {
 	
 	@ManyToOne()
 	@JoinColumn(name="warehouseId")
+	@JsonIgnore
 	private Warehouse warehouse;
 	
 	@OneToMany(mappedBy="truck")
+	@JsonIgnore
 	private List<Package> packages;
 	
 	
@@ -53,11 +58,11 @@ public class Truck {
 		Id = id;
 	}
 
-	public Warehouse getHeadquarter() {
+	public Warehouse getWarehouse() {
 		return warehouse;
 	}
 
-	public void setHeadquarter(Warehouse warehouse) {
+	public void setWarehouse(Warehouse warehouse) {
 		this.warehouse = warehouse;
 	}
 	
