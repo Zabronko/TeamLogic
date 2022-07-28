@@ -1,12 +1,13 @@
 package com.TeamLogic.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,17 @@ public class Customer {
 	@Column(name="name")
 	private String name;
 	
+	@Column(name="address")
 	private String address;
+	
+	@Column(name="city")
+	private String city;
+	
+	@Column(name="state")
+	private String state;
+	
+	@OneToMany(mappedBy="customer")
+	private List<Package> packages;
 
 	public Customer() {
 		super();

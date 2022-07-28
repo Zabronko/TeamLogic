@@ -11,11 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity()
-@Table(name = "Headquarters")
-public class Headquarter {
+@Table(name = "Warehouses")
+public class Warehouse {
 
 	@Id
-	@Column(name="headquarterId")
+	@Column(name="warehouseId")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	
@@ -25,14 +25,17 @@ public class Headquarter {
 	@Column(name="state")
 	private String state;
 	
-	@OneToMany(mappedBy="headquarter")
+	@OneToMany(mappedBy="warehouse")
 	private List<Truck> trucks;
+	
+	@OneToMany(mappedBy="warehouse")
+	private List<Package> packages;
 
-	public Headquarter() {
+	public Warehouse() {
 		super();
 	}
 
-	public Headquarter(String city, String state) {
+	public Warehouse(String city, String state) {
 		super();
 		this.city = city;
 		this.state = state;

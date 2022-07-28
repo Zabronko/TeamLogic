@@ -1,5 +1,7 @@
 package com.TeamLogic.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,10 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="DeliveryTrucks")
@@ -22,12 +23,12 @@ public class Truck {
 	private int Id;
 	
 	@ManyToOne()
-	@JoinColumn(name="headquarterId")
-	private Headquarter headquarter;
+	@JoinColumn(name="warehouseId")
+	private Warehouse warehouse;
 	
-	@OneToOne(mappedBy="truck")
-	@JsonIgnore
-	private Route route;
+	@OneToMany(mappedBy="truck")
+	private List<Package> packages;
+	
 	
 	@OneToOne()
 	@JoinColumn(name="statusId")
@@ -38,10 +39,9 @@ public class Truck {
 		super();
 	}
 
-	public Truck(Headquarter headquarter, Route route, Status status) {
+	public Truck(Warehouse warehouse, Status status) {
 		super();
-		this.headquarter = headquarter;
-		this.route = route;
+		this.warehouse = warehouse;
 		this.status = status;
 	}
 
@@ -53,20 +53,12 @@ public class Truck {
 		Id = id;
 	}
 
-	public Headquarter getHeadquarter() {
-		return headquarter;
+	public Warehouse getHeadquarter() {
+		return warehouse;
 	}
 
-	public void setHeadquarter(Headquarter headquarter) {
-		this.headquarter = headquarter;
-	}
-
-	public Route getRoute() {
-		return route;
-	}
-
-	public void setRoute(Route route) {
-		this.route = route;
+	public void setHeadquarter(Warehouse warehouse) {
+		this.warehouse = warehouse;
 	}
 	
 	public Status getStatus() {

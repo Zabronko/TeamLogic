@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.TeamLogic.repositories.HeadquarterRepository;
+import com.TeamLogic.repositories.WarehouseRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/headquarters")
+@RequestMapping("/warehouses")
 @CrossOrigin(origins = "*")
-public class HeadquarterController {
+public class WarehouseController {
 
 	@Autowired
-	private HeadquarterRepository repository;
+	private WarehouseRepository repository;
 	
 	@GetMapping
 	public String findAll() throws JsonProcessingException {
