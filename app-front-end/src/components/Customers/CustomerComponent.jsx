@@ -7,7 +7,7 @@ export const CustomerComponent = ({customers}) => {
 
   
     return (
-    <Table bordered>               
+    <Table striped bordered hover>               
             <thead>
                 <tr>
                     <th>Name</th>
