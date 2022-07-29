@@ -108,7 +108,7 @@ public class Truck {
 
 	@Override
 	public String toString() {
-		return "Truck [Id=" + Id + ", type=" + type + ", capacity=" + capacity + "]";
+		return "Truck [Id=" + Id + ", type=" + type + ", capacity=" + capacity + ", status=" + status + "]";
 	}
 	
 }

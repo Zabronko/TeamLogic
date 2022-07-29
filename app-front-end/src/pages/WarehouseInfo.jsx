@@ -9,8 +9,7 @@ export const WarehouseInfo = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/warehouses/` + window.location.href.charAt(window.location.href.length-1))
-    .then(res => setWarehouse(res.data))
-    .finally(console.log(warehouse));
+    .then(res => setWarehouse(res.data));
   },[]);
 
 

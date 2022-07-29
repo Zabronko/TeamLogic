@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
+import com.TeamLogic.beans.Truck;
 import com.TeamLogic.repositories.PackageRepository;
-import com.TeamLogic.repositories.StatusRepository;
 
 @RestController
 @RequestMapping("/packages")
@@ -21,25 +24,19 @@ import com.TeamLogic.repositories.StatusRepository;
 public class PackageController {
 	
 	@Autowired
-	private PackageRepository repository;
+	private GenericService service;
 	
 	@Autowired
-	private StatusRepository statusRepository;
+	private PackageRepository repository;
 	
 	@GetMapping
 	public List<Package> findAll() {
 		return repository.findAll();
 	}
 	
-	@PutMapping("/{id}")
-	public Package save(@RequestBody Package pack, @PathVariable int id) {
-		System.out.println(pack);
-		if(repository.existsById(id)) {
-			pack.setId(id);
-			return repository.save(pack);
-		}else {
-			throw new IllegalArgumentException("ID Doesnt exist");
-		}
+	@PutMapping("{id}")
+	public Truck updateByTruck(@RequestBody() Package pack, @RequestParam(required = false) int truckId, @PathVariable int id) {
+		System.out.println(service.updatePackageByTruck(pack, id, truckId));
+		return service.updatePackageByTruck(pack, id, truckId);
 	}
-
 }

@@ -1,9 +1,7 @@
 import { Table } from 'react-bootstrap'
 import { Package } from './Package';
 
-export const PackageList = ({setWarehouse, mode, packages, warehouse }) => {
-
-    console.log(warehouse);
+export const PackageList = ({trucks, mode, warehouse}) => {
 
     return (
         <>
@@ -19,8 +17,15 @@ export const PackageList = ({setWarehouse, mode, packages, warehouse }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {packages.map((pack) => {
-                        return < Package key={pack.id} setWarehouse={setWarehouse} mode={mode} pack={pack} warehouse={warehouse} />
+                    {trucks.map((truck) => {
+                        return (truck.packages.map((pack) => {
+                            pack.truck = truck;
+                            warehouse.packages = warehouse.packages.filter(data => data.id !== pack.id)
+                            return < Package key={pack.id} mode={mode} pack={pack} truck={truck} warehouse={warehouse} />
+                        }))
+                    })}
+                    {warehouse.packages.map((pack) => {
+                        return < Package key={pack.id} mode={mode} pack={pack} truck={undefined} warehouse={warehouse} />
                     })}
                 </tbody>
             </Table>

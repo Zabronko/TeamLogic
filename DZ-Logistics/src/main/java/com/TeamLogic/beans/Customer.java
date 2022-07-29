@@ -35,6 +35,7 @@ public class Customer {
 	private String state;
 	
 	@OneToMany(mappedBy="customer")
+	@JsonIgnore
 	private List<Package> packages;
 
 	public Customer() {
@@ -100,7 +101,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name +"]";
+		return "Customer [id=" + id + ", name=" + name + ", address=" + address + ", city=" + city + ", state=" + state + "]";
 	}
 	
 

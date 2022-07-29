@@ -36,7 +36,6 @@ public class Package {
 	
 	@ManyToOne()
 	@JoinColumn(name="customerId")
-	@JsonIgnore
 	private Customer customer;
 	
 	@OneToOne()
