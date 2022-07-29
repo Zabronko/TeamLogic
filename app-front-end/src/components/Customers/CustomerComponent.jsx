@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import axios from "axios";
+import { CustomerIndividual } from './CustomerIndividual';
 
-export const CustomerComponent = () => {
-    const [customers, setCustomers] = useState([]);
+export const CustomerComponent = ({customers}) => {
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/customers')
-        .then(res => setCustomers(res.data));
-    },[]);
   
     return (
-    <Table bordered>               
+    <Table striped bordered hover>               
             <thead>
                 <tr>
                     <th>Name</th>
@@ -23,14 +17,8 @@ export const CustomerComponent = () => {
             <tbody>
             {customers.map((customer) => {
                     return (
-                    // <CustomerIndividual key={customers.id} customer={customer} customers={requests} setCustomers={setCustomers}/>
-                    <tr key={customer.id}>
-                        <td>{customer.name}</td>
-                        <td>{customer.address}</td>
-                        <td>{customer.city}</td>
-                        <td>{customer.state}</td>
+                    <CustomerIndividual key={customer.id} customer={customer}/>
 
-                    </tr>
                     );
                 })}
             </tbody>

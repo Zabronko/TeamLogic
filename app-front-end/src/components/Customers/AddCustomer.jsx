@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef} from "react";
 import axios from "axios"; 
 
 
@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-export const AddCustomer = () => {
+export const AddCustomer = ({customers, setCustomers}) => {
     const nameRef = useRef();
     const addressRef = useRef();
     const cityRef = useRef();
@@ -16,7 +16,7 @@ export const AddCustomer = () => {
     const handleSubmit = async (event) => {
         try {
         event.preventDefault();
-        const { data} = await axios.post('http://localhost:8080/customers',
+        const { data } = await axios.post('http://localhost:8080/customers',
         {
             name: nameRef.current.value,
             address: addressRef.current.value,
@@ -24,7 +24,7 @@ export const AddCustomer = () => {
             state: stateRef.current.value
         }
         );
-
+        setCustomers([...customers, data]);
 
         nameRef.current.value = null;
         addressRef.current.value = null;
