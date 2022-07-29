@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
 import Card from "react-bootstrap/Card";
+import { CustomerPackage } from "../components/Customers/CustomerPackage";
 
 export const CustomerInfo = () => {
   const [customer, setCustomer] = useState([]);
@@ -23,7 +24,7 @@ export const CustomerInfo = () => {
     </Card>
     <Card>
     {customer.packages?.map((pack) => {
-                        return <div key={pack.id}> {pack.id}</div>
+                        return <CustomerPackage key={pack.id} pack={pack}/>
                     })}
     </Card>
     </>
