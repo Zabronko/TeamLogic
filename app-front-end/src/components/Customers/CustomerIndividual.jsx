@@ -1,7 +1,14 @@
 import React from 'react'
 
-export const CustomerIndividual = () => {
+
+
+export const CustomerIndividual = ({customer}) => {
   return (
-    <div>CustomerIndividual</div>
+    <tr>
+    <td>{customer.name}</td>
+    <td>{customer.address}</td>
+    <td>{customer.city}</td>
+    <td>{customer.state}</td>
+    </tr>
   )
 }

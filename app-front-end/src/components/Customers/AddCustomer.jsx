@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import axios from "axios"; 
 
 
@@ -16,7 +16,7 @@ export const AddCustomer = () => {
     const handleSubmit = async (event) => {
         try {
         event.preventDefault();
-        const { data} = await axios.post('http://localhost:8080/customers',
+        const { data } = await axios.post('http://localhost:8080/customers',
         {
             name: nameRef.current.value,
             address: addressRef.current.value,
@@ -24,7 +24,6 @@ export const AddCustomer = () => {
             state: stateRef.current.value
         }
         );
-
 
         nameRef.current.value = null;
         addressRef.current.value = null;
