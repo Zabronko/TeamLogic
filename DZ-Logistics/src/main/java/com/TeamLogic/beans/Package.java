@@ -37,6 +37,10 @@ public class Package {
 	@ManyToOne()
 	@JoinColumn(name="customerId")
 	private Customer customer;
+	
+	@OneToOne()
+	@JoinColumn(name="statusId")
+	private Status status;
 
 	public Package() {
 		super();
@@ -95,10 +99,18 @@ public class Package {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
-		return "Package [id=" + id + ", description=" + description + ", customer=" + customer + "]";
+		return "Package [id=" + id + ", description=" + description + ", customer=" + customer + ", status=" + status + "]";
 	}
 	
 	

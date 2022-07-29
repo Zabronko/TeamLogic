@@ -18,7 +18,7 @@ export const WarehouseInfo = () => {
   if(warehouse.id!==undefined) {
     return (
       <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
-        <WarehouseOverview warehouse={warehouse}/>
+        <WarehouseOverview warehouse={warehouse} setWarehouse={setWarehouse}/>
       </Card>
     )
   }

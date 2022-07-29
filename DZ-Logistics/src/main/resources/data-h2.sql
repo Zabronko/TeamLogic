@@ -1,6 +1,8 @@
 -- status
 insert into Status (status) values ('Idle');
 insert into Status (status) values ('Driving');
+insert into Status (status) values ('On Truck');
+insert into Status (status) values ('Delivered');
 
 -- customers
 insert into Customers (name, address, city, state) values ('Eddy Wooding', '32410 Bay Plaza', 'Dallas', 'TX');
