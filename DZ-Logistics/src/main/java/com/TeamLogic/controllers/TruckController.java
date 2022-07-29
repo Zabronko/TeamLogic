@@ -13,39 +13,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TeamLogic.beans.Truck;
-import com.TeamLogic.beans.Warehouse;
-import com.TeamLogic.repositories.WarehouseRepository;
+import com.TeamLogic.repositories.TruckRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+
 @RestController
-@RequestMapping("/warehouses")
+@RequestMapping("/trucks")
 @CrossOrigin(origins = "*")
-public class WarehouseController {
+public class TruckController {
 
 	@Autowired
-	private WarehouseRepository repository;
+	private TruckRepository repository;
 	
 	@GetMapping
-	public List<Warehouse> findAll() throws JsonProcessingException {
+	public List<Truck> findAll() throws JsonProcessingException {
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Warehouse> findById(@PathVariable int id) throws JsonProcessingException {
+	public Optional<Truck> findById(@PathVariable int id) throws JsonProcessingException {
 		return repository.findById(id);
 	}
 	
 	@PutMapping("/{id}")
-	public Warehouse update(@RequestBody Warehouse warehouse, @PathVariable int id) {
-		System.out.println(warehouse);
-		if(repository.existsById(id)) {
-			warehouse.setId(id);
-			warehouse.setPackages(warehouse.getPackages());
-			warehouse.setTrucks(warehouse.getTrucks());
-			return repository.save(warehouse);
-		}else {
-			throw new IllegalArgumentException("ID Doesnt exist");
-		}
+	public Truck update(@RequestBody Truck truck, @PathVariable int id) {
+		System.out.println(truck);
+		return repository.save(truck);
 	}
 	
 }
