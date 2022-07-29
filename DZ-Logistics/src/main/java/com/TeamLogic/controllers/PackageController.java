@@ -41,5 +41,11 @@ public class PackageController {
 			throw new IllegalArgumentException("ID Doesnt exist");
 		}
 	}
-
+	
+	@GetMapping("/customer{id}")
+	public List<Package> getPackagesByCustomerId(@PathVariable int id) {
+		return repository.findByCustomerId(id);
+		
+	}
+ 
 }
