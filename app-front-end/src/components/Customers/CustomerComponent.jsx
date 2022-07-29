@@ -3,13 +3,8 @@ import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { CustomerIndividual } from './CustomerIndividual';
 
-export const CustomerComponent = () => {
-    const [customers, setCustomers] = useState([]);
+export const CustomerComponent = ({customers}) => {
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/customers')
-        .then(res => setCustomers(res.data));
-    },[]);
   
     return (
     <Table bordered>               
