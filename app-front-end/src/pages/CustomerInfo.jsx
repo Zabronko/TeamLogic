@@ -19,10 +19,13 @@ export const CustomerInfo = () => {
     <div>{customer.address}</div>
     <div>{customer.city}</div>
     <div>{customer.state}</div>
+    
     </Card>
-
+    <Card>
+    {customer.packages?.map((pack) => {
+                        return <div key={pack.id}> {pack.id}</div>
+                    })}
+    </Card>
     </>
   )
 }
-
-
