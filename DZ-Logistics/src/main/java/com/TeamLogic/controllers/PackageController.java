@@ -39,4 +39,11 @@ public class PackageController {
 		System.out.println(service.updatePackageByTruck(pack, id, truckId));
 		return service.updatePackageByTruck(pack, id, truckId);
 	}
+
+	@GetMapping("/customer{id}")
+	public List<Package> getPackagesByCustomerId(@PathVariable int id) {
+		return repository.findByCustomerId(id);
+		
+	}
+
 }

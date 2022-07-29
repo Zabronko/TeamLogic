@@ -36,6 +36,7 @@ public class Customer {
 	
 	@OneToMany(mappedBy="customer")
 	@JsonIgnore
+	//@JsonIgnore
 	private List<Package> packages;
 
 	public Customer() {
