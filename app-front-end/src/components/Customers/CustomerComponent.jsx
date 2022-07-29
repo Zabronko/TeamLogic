@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import axios from "axios";
 import { CustomerIndividual } from './CustomerIndividual';
 
 export const CustomerComponent = ({customers}) => {
@@ -19,7 +17,7 @@ export const CustomerComponent = ({customers}) => {
             <tbody>
             {customers.map((customer) => {
                     return (
-                    <CustomerIndividual key={customers.id} customer={customer}/>
+                    <CustomerIndividual key={customer.id} customer={customer}/>
 
                     );
                 })}
