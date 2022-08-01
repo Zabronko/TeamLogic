@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-export const CreatePackage = ({packs, setPacks}) => {
+export const CreatePackage = ({customerId, packages, setPackages}) => {
     const descriptionRef = useRef();
     const warehouseRef = useRef();
 
@@ -22,14 +22,17 @@ export const CreatePackage = ({packs, setPacks}) => {
                 status: {
                     id: 1,
                     status: "Idle"
+                },
+                customer: {
+                    id: customerId
                 }
             }
             );
-            setPacks([...packs, data]);
+            setPackages([...packages,data]);
     
             descriptionRef.current.value = null;
             warehouseRef.current.value = null;
-    
+            
             } catch(err) {
                 console.error(err);
             }

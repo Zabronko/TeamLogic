@@ -4,11 +4,13 @@ import {useLocation} from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import { CustomerPackage } from "../components/Customers/CustomerPackage";
 import { Button } from "react-bootstrap";
+import { CreatePackage } from "../components/Packages/CreatePackage";
 
 export const CustomerInfo = () => {
   const location = useLocation();
   const customer = location.state.id;
   const [packages, setPackages] = useState([]);
+  const [renderAddPackage, setRenderAddPackage] = useState(false);
   
 
   useEffect(() => {
@@ -26,9 +28,10 @@ export const CustomerInfo = () => {
     <div><Button>edit customer</Button></div>
     
     </Card>
-    <Button>add package</Button>
+    <Button onClick={() => setRenderAddPackage(true)}>add package</Button>
+    {renderAddPackage && <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>}
     <Card>
-    {packages?.map((pack) => {
+    {packages.map((pack) => {
                         return <CustomerPackage key={pack.id} pack={pack}/>
                     })}
     </Card>
