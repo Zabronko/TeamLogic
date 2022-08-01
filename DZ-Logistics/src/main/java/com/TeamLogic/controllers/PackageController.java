@@ -45,5 +45,10 @@ public class PackageController {
 		return repository.findByCustomerId(id);
 		
 	}
+	
+	@PutMapping("/new")
+	public Package save(@RequestBody Package pack) {
+		return repository.save(pack);
+	}
 
 }

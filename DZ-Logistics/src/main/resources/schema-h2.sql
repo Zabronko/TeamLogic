@@ -34,7 +34,7 @@ create table Packages (
 	description VARCHAR(50) not null DEFAULT('none'),
 	warehouseId INT,
     truckId INT,
-    customerId INT not null,
+    customerId INT,
     statusId INT not null DEFAULT(1),
     
     foreign key (warehouseId) references Warehouses(warehouseId),
