@@ -3,15 +3,18 @@ import axios from "axios";
 import {useLocation} from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import { CustomerPackage } from "../components/Customers/CustomerPackage";
+import { Button } from "react-bootstrap";
 
 export const CustomerInfo = () => {
-  const [customer, setCustomer] = useState([]);
   const location = useLocation();
+  const customer = location.state.id;
+  const [packages, setPackages] = useState([]);
+  
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/customers/${location.state.id}`)
-    .then(res => setCustomer(res.data))
-  },[location.state.id]);
+    axios.get(`http://localhost:8080/packages/customer${customer.id}`)
+    .then(res => setPackages(res.data))
+  },[customer.id]);
   
   return (
     <>
@@ -20,10 +23,12 @@ export const CustomerInfo = () => {
     <div>{customer.address}</div>
     <div>{customer.city}</div>
     <div>{customer.state}</div>
+    <div><Button>edit customer</Button></div>
     
     </Card>
+    <Button>add package</Button>
     <Card>
-    {customer.packages?.map((pack) => {
+    {packages?.map((pack) => {
                         return <CustomerPackage key={pack.id} pack={pack}/>
                     })}
     </Card>

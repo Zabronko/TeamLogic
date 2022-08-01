@@ -9,7 +9,7 @@ export const CustomerIndividual = ({customer}) => {
 
 
   const handleClick = async() => {
-    history(`./${customer.id}`, {state:{id:customer.id}})
+    history(`./${customer.id}`, {state:{id:customer}})
   }
 
   return (

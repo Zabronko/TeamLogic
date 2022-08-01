@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <Card>
         <Card.Body>
-           Home
+           Welcome to the Home page
         </Card.Body>
     </Card>
   )
