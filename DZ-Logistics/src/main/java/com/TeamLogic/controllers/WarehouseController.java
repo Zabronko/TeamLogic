@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
 import com.TeamLogic.beans.Warehouse;
@@ -30,10 +31,7 @@ public class WarehouseController {
 	private WarehouseRepository repository;
 	
 	@Autowired
-	private TruckRepository truckRepository;
-	
-	@Autowired
-	private PackageRepository packageRepository;
+	private GenericService service;
 	
 	@GetMapping
 	public List<Warehouse> findAll() throws JsonProcessingException {
@@ -41,9 +39,18 @@ public class WarehouseController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Warehouse> findById(@PathVariable int id) throws JsonProcessingException {
-		return repository.findById(id);
+	public Warehouse findById(@PathVariable int id) throws JsonProcessingException {
+		System.out.println(repository.findById(id).get().getTrucks());
+		return repository.findById(id).get();
 	}
 	
-	
+	@PutMapping("/{id}")
+	public Warehouse update(@PathVariable int id, @RequestBody Warehouse warehouse) {
+		if(repository.existsById(id)) {
+			warehouse.setId(id);
+			return repository.save(warehouse);
+		} else {
+			throw new IllegalArgumentException("ID Doesnt exist");
+		}
+	}
 }

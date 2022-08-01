@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap'
 import { Truck } from "./Truck";
 
-export const TruckList = ({trucks, warehouse}) => {
+export const TruckList = ({warehouse}) => {
 
     return (
         <>
@@ -17,7 +17,7 @@ export const TruckList = ({trucks, warehouse}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {trucks.map((truck) => {
+                    {warehouse.trucks.map((truck) => {
                         return < Truck key={truck.id} truck={truck} warehouse={warehouse}/>
                     })}
                 </tbody>

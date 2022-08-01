@@ -2,6 +2,7 @@ package com.TeamLogic.beans;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class Truck {
 	@JoinColumn(name="capacity")
 	private int capacity;
 	
-	@OneToMany(mappedBy="truck")
+	@OneToMany(mappedBy="truck", cascade = CascadeType.ALL)
 	private List<Package> packages;
 	
 	
@@ -108,7 +109,7 @@ public class Truck {
 
 	@Override
 	public String toString() {
-		return "Truck [Id=" + Id + ", type=" + type + ", capacity=" + capacity + ", status=" + status + "]";
+		return "Truck [Id=" + Id + ", type=" + type + ", capacity=" + capacity + ", packages=" + packages + ", status=" + status + "]";
 	}
 	
 }
