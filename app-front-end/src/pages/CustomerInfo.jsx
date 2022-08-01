@@ -6,11 +6,14 @@ import { CustomerPackage } from "../components/Customers/CustomerPackage";
 
 export const CustomerInfo = () => {
   const [customer, setCustomer] = useState([]);
+  const [packages, setPackages] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
     axios.get(`http://localhost:8080/customers/${location.state.id}`)
     .then(res => setCustomer(res.data))
+    axios.get(`http://localhost:8080/packages/customer${location.state.id}`)
+    .then(res => setPackages(res.data))
   },[location.state.id]);
   
   return (
@@ -23,7 +26,7 @@ export const CustomerInfo = () => {
     
     </Card>
     <Card>
-    {customer.packages?.map((pack) => {
+    {packages?.map((pack) => {
                         return <CustomerPackage key={pack.id} pack={pack}/>
                     })}
     </Card>
