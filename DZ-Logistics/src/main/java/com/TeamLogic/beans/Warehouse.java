@@ -87,7 +87,7 @@ public class Warehouse {
 
 	@Override
 	public String toString() {
-		return "Warehouse [id=" + id + ", city=" + city + ", state=" + state + "]";
+		return "Warehouse [id=" + id + ", city=" + city + ", state=" + state + ", trucks=" + trucks + ", packages=" + packages + "]";
 	}
 	
 }

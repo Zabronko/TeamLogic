@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
-import com.TeamLogic.beans.Truck;
+import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.PackageRepository;
 
 @RestController
@@ -34,16 +33,14 @@ public class PackageController {
 		return repository.findAll();
 	}
 	
-	@PutMapping("{id}")
-	public Truck updateByTruck(@RequestBody() Package pack, @RequestParam(required = false) int truckId, @PathVariable int id) {
-		System.out.println(service.updatePackageByTruck(pack, id, truckId));
-		return service.updatePackageByTruck(pack, id, truckId);
+	@PutMapping()
+	public Warehouse updateAll(@RequestParam int warehouseId, @RequestBody() List<Package> packages) {
+		return service.updateAllPackages(warehouseId, packages);
 	}
 
 	@GetMapping("/customer{id}")
 	public List<Package> getPackagesByCustomerId(@PathVariable int id) {
-		return repository.findByCustomerId(id);
-		
+		return repository.findByCustomerId(id);	
 	}
 
 }

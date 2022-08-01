@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.TeamLogic.beans.Package;
+import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Truck;
+import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.TruckRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -26,6 +28,9 @@ public class TruckController {
 	@Autowired
 	private TruckRepository repository;
 	
+	@Autowired
+	private GenericService service;
+	
 	@GetMapping
 	public List<Truck> findAll() throws JsonProcessingException {
 		return repository.findAll();
@@ -36,5 +41,11 @@ public class TruckController {
 		return repository.findById(id);
 	}
 	
+	
+	@PutMapping
+	public Warehouse updateAll(@RequestParam int warehouseId, @RequestBody List<Truck> trucks) {
+		System.out.println(trucks);
+		return service.updateAllTrucks(warehouseId, trucks);
+	}
 	
 }
