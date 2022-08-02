@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card'
 
 export const CreatePackage = ({customerId, packages, setPackages}) => {
     const descriptionRef = useRef();
@@ -36,6 +37,7 @@ export const CreatePackage = ({customerId, packages, setPackages}) => {
     }
 
   return (
+    <Card>
     <Form onSubmit={handleSubmit}>
         <Row>
         <Col>
@@ -58,11 +60,13 @@ export const CreatePackage = ({customerId, packages, setPackages}) => {
             </Form.Select>
         </Col>
         
+        
   
     </Row>
     <Button variant="success" type="submit" >
         Submit New Package
         </Button>
     </Form>
+    </Card>
   )
 }
