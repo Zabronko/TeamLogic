@@ -28,7 +28,7 @@ export const CustomerInfo = () => {
     <div><Button>edit customer</Button></div>
     
     </Card>
-    <Button onClick={() => setRenderAddPackage(true)}>add package</Button>
+    <Button onClick={() => setRenderAddPackage(!renderAddPackage)}>add package</Button>
     {renderAddPackage && <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>}
     <Card>
     {packages.map((pack) => {
