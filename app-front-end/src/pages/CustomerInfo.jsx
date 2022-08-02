@@ -8,18 +8,26 @@ import { CreatePackage } from "../components/Packages/CreatePackage";
 
 import { EditCustomer } from "../components/Customers/EditCustomer";
 
+
 export const CustomerInfo = () => {
   const location = useLocation();
-  const [customer, setCustomer] = useState(location.state.id);
+  const cust = location.state.id;
+  const [customer, setCustomer] = useState([]);
   const [packages, setPackages] = useState([]);
   const [renderAddPackage, setRenderAddPackage] = useState(false);
   const [renderEditCustomer, setRenderEditCustomer] = useState(false);
-  
+ 
+  const getData = async() => {
+    const res = await axios.get(`http://localhost:8080/customers/${cust.id}`);
+    setCustomer(res.data);
+}
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/packages/customer${customer.id}`)
+    axios.get(`http://localhost:8080/packages/customer${cust.id}`)
     .then(res => setPackages(res.data))
-  },[customer.id]);
+    .then(getData)
+  },[cust.id]);
+
   
   return (
     <>
@@ -30,9 +38,9 @@ export const CustomerInfo = () => {
     <div>{customer.city}</div>
     <div>{customer.state}</div>
     </>}
-    {renderEditCustomer && <EditCustomer customer={customer} setCustomer={setCustomer}/>}
+    {renderEditCustomer && <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>}
 
-    <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>edit customer</Button></div>
+    {!renderEditCustomer && <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>edit customer</Button></div>}
     </Card>
     <Button onClick={() => setRenderAddPackage(!renderAddPackage)}>add package</Button>
     {renderAddPackage && <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>}

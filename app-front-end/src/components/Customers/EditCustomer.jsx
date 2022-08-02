@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
-export const EditCustomer = ({customer, setCustomer}) => {
+export const EditCustomer = ({customer, setCustomer,renderEditCustomer, setRenderEditCustomer}) => {
     const nameRef = useRef();
     const addressRef = useRef();
     const cityRef = useRef();
@@ -23,7 +23,7 @@ export const EditCustomer = ({customer, setCustomer}) => {
         }
         );
             setCustomer(data);
-
+            setRenderEditCustomer(!renderEditCustomer);
         } catch(err) {
             console.error(err);
         }
