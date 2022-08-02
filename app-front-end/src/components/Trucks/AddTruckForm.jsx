@@ -25,17 +25,17 @@ export const AddTruckForm = () => {
         <Form onSubmit={handleSubmit} style={{justifyContent:"center", width:"90%", padding:"5%"}}>
             <Row>
                 <Col>
-                    <Form.Label>Type:</Form.Label>
-                    <Form.Select name="Type" ref={typeRef} required defaultValue="Type">
-                        <option>Type</option>
+                    <Form.Label>Type: <p style={{color:"red", fontSize:"10px", margin:0}}>*required</p></Form.Label>
+                    <Form.Select name="Type" ref={typeRef} required="true" defaultValue="Type">
+                        <option value="">Type</option>
                         <option value="Delivery">Delivery</option>
                         <option value="Freight">Freight</option>
                     </Form.Select>
                 </Col>
                 <Col>
-                    <Form.Label >Wharehouse:</Form.Label>
-                    <Form.Select dir="up" name="warehouse" ref={warehouseRef}  required defaultValue="warehouse">
-                        <option>warehouse</option>
+                    <Form.Label>Warehouse:<p style={{color:"red", fontSize:"10px", margin:0}}>*required</p></Form.Label>
+                    <Form.Select name="warehouse" ref={warehouseRef}  required="true" defaultValue="warehouse">
+                        <option value="">warehouse</option>
                         <option value="5">Little Rock, AR</option>
                         <option value="9">Little Rock, AZ</option>
                         <option value="7">New Orleans, LA</option>
@@ -48,8 +48,8 @@ export const AddTruckForm = () => {
                     </Form.Select>
                 </Col>
                 <Col>
-                    <Form.Label>Capacity:</Form.Label>
-                    <Form.Control name="Capacity" ref={capacityRef} required placeholder='Enter Capacity of Truck' />
+                    <Form.Label>Capacity:<p style={{color:"red", fontSize:"10px", margin:0}}>*required</p></Form.Label>
+                    <Form.Control name="Capacity" ref={capacityRef} required="true" placeholder='Enter Capacity of Truck' />
                 </Col>
             </Row>
             <Row>

@@ -29,15 +29,17 @@ export const Package = ({ mode, pack, warehouse, type }) => {
                 <td><select defaultValue={pack.truck !== undefined ? pack.truck.id : selectedRef.current} onChange={(e) => {e.target.value !== "In Warehouse"?pack.truck = warehouse.trucks.filter(data => data.id === parseInt(e.target.value))[0]:pack.truck=undefined}}>
                     <option value="In Warehouse">In Warehouse</option>
                     {warehouse.trucks.map((truck) => {
-                        if(type === undefined) {
-                            return <option key={truck.id} value={truck.id} >{truck.id}</option>
-                        } else if(type === 'deliver') {
-                            if(truck.type === 'Delivery') {
+                        if(truck.status.id === 1) {
+                            if(type === undefined) {
                                 return <option key={truck.id} value={truck.id} >{truck.id}</option>
-                            }
-                        } else {
-                            if(truck.type === 'Freight') {
-                                return <option key={truck.id} value={truck.id} >{truck.id}</option>
+                            } else if(type === 'deliver') {
+                                if(truck.type === 'Delivery') {
+                                    return <option key={truck.id} value={truck.id} >{truck.id}</option>
+                                }
+                            } else {
+                                if(truck.type === 'Freight') {
+                                    return <option key={truck.id} value={truck.id} >{truck.id}</option>
+                                }
                             }
                         }
                     })}
