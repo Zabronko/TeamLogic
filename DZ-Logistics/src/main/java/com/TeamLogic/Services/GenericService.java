@@ -35,5 +35,11 @@ public class GenericService {
 		return warehouseRepository.save(warehouse);
 	}
 
+
+	public Package savePackage(Package pack, int warehouseId) {
+		pack.setWarehouse(warehouseRepository.findById(warehouseId).get());
+		return packageRepository.save(pack);
+	}
+
 	
 }

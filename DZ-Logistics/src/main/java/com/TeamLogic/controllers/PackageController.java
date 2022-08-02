@@ -45,8 +45,8 @@ public class PackageController {
 	}
 	
 	@PutMapping("/new")
-	public Package save(@RequestBody Package pack) {
-		return repository.save(pack);
+	public Package save(@RequestBody Package pack, @RequestParam int warehouseId) {
+		return service.savePackage(pack, warehouseId);
 	}
 
 }
