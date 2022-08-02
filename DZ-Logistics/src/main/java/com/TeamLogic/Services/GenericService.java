@@ -41,5 +41,11 @@ public class GenericService {
 		return packageRepository.save(pack);
 	}
 
+
+	public void saveTruck(Truck truck, int warehouseId) {
+		truck.setWarehouse(warehouseRepository.findById(warehouseId).get());
+		truckRepository.save(truck);
+	}
+
 	
 }

@@ -48,9 +48,11 @@ export const WarehouseOverview = () => {
                         <TruckList trucks={warehouse.trucks} warehouse={warehouse} />
                     </Card>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <h2 style={{ textAlign: "center" }}>Packages</h2>
                         <Button onClick={() => { setMode('editPackages') }}>Manage Packages</Button>
-                        <PackageList mode={'read'} warehouse={warehouse} />
+                        <h2 style={{ textAlign: "center" }}>Packages To Deliver</h2>
+                        <PackageList mode={'read'} warehouse={warehouse} type={'deliver'}/>
+                        <h2 style={{ textAlign: "center" }}>Packages To Ship</h2>
+                        <PackageList mode={'read'} warehouse={warehouse} type={'ship'}/>
                     </Card>
                 </>
             );
@@ -63,9 +65,11 @@ export const WarehouseOverview = () => {
                         <TruckList warehouse={warehouse} />
                     </Card>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <h2 style={{ textAlign: "center" }}>Packages</h2>
-                        <Button onClick={() => { setMode('read'); updateWarehouse() }}>Save</Button>
-                        <PackageList mode={'edit'} warehouse={warehouse} />
+                        <Button onClick={() => { setMode('read'); updateWarehouse()}}>Save</Button>
+                        <h2 style={{ textAlign: "center" }}>Packages To Deliver</h2>
+                        <PackageList mode={'edit'} warehouse={warehouse} type={'deliver'}/>
+                        <h2 style={{ textAlign: "center" }}>Packages To Ship</h2>
+                        <PackageList mode={'edit'} warehouse={warehouse} type={'ship'}/>
                     </Card>
                 </>
             );
