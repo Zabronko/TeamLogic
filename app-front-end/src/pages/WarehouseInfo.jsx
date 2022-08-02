@@ -5,7 +5,7 @@ export const WarehouseInfo = () => {
 
 
     return (
-      <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
+      <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
         <WarehouseOverview/>
       </Card>
     )
