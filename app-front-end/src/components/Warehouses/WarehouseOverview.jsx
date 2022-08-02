@@ -44,14 +44,14 @@ export const WarehouseOverview = () => {
                 <>
                     <h1 style={{ textAlign: "center" }}>Warehouse:  {warehouse.city},{warehouse.state}</h1>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <h2 style={{ textAlign: "center" }}>Trucks</h2>
+                        <h4 style={{ textAlign: "center" }}>Trucks</h4>
                         <TruckList trucks={warehouse.trucks} warehouse={warehouse} />
                     </Card>
-                    <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <Button onClick={() => { setMode('editPackages') }}>Manage Packages</Button>
-                        <h2 style={{ textAlign: "center" }}>Packages To Deliver</h2>
+                    <Card style={{ border: "none", width: "90%", marginLeft: "5%", justifyContent: "center" }}>
+                        <Button style={{padding:0,width:'30%',marginLeft:"35%"}} onClick={() => { setMode('editPackages') }}>Manage Packages</Button>
+                        <h4 style={{ textAlign: "center" }}>Packages To Deliver</h4>
                         <PackageList mode={'read'} warehouse={warehouse} type={'deliver'}/>
-                        <h2 style={{ textAlign: "center" }}>Packages To Ship</h2>
+                        <h4 style={{ textAlign: "center" }}>Packages To Ship</h4>
                         <PackageList mode={'read'} warehouse={warehouse} type={'ship'}/>
                     </Card>
                 </>
@@ -61,14 +61,14 @@ export const WarehouseOverview = () => {
                 <>
                     <h1 style={{ textAlign: "center" }}>Warehouse:  {warehouse.city},{warehouse.state}</h1>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <h2 style={{ textAlign: "center" }}>Trucks</h2>
+                        <h4 style={{ textAlign: "center" }}>Trucks</h4>
                         <TruckList warehouse={warehouse} />
                     </Card>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
-                        <Button onClick={() => { setMode('read'); updateWarehouse()}}>Save</Button>
-                        <h2 style={{ textAlign: "center" }}>Packages To Deliver</h2>
+                        <Button style={{padding:0,width:'30%',marginLeft:"35%"}} onClick={() => { setMode('read'); updateWarehouse()}}>Save</Button>
+                        <h4 style={{ textAlign: "center" }}>Packages To Deliver</h4>
                         <PackageList mode={'edit'} warehouse={warehouse} type={'deliver'}/>
-                        <h2 style={{ textAlign: "center" }}>Packages To Ship</h2>
+                        <h4 style={{ textAlign: "center" }}>Packages To Ship</h4>
                         <PackageList mode={'edit'} warehouse={warehouse} type={'ship'}/>
                     </Card>
                 </>
