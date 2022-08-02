@@ -48,4 +48,9 @@ public class TruckController {
 		service.saveTruck(truck, warehouseId);
 	}
 	
+	@PutMapping("/{id}")
+	public Truck updateTruck(@RequestParam int statusId, @PathVariable int id, @RequestParam int warehouseId) {
+		return service.updateTruck(statusId,id,warehouseId);
+	}
+	
 }

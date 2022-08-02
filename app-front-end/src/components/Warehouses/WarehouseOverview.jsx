@@ -45,10 +45,10 @@ export const WarehouseOverview = () => {
                     <h1 style={{ textAlign: "center" }}>Warehouse:  {warehouse.city},{warehouse.state}</h1>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
                         <h4 style={{ textAlign: "center" }}>Trucks</h4>
-                        <TruckList trucks={warehouse.trucks} warehouse={warehouse} />
+                        <TruckList mode={mode} warehouse={warehouse} />
                     </Card>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", justifyContent: "center" }}>
-                        <Button style={{padding:0,width:'30%',marginLeft:"35%"}} onClick={() => { setMode('editPackages') }}>Manage Packages</Button>
+                        <Button style={{padding:0,width:'30%',marginLeft:"35%"}} onClick={() => { setMode('edit') }}>Manage Packages</Button>
                         <h4 style={{ textAlign: "center" }}>Packages To Deliver</h4>
                         <PackageList mode={'read'} warehouse={warehouse} type={'deliver'}/>
                         <h4 style={{ textAlign: "center" }}>Packages To Ship</h4>
@@ -56,13 +56,13 @@ export const WarehouseOverview = () => {
                     </Card>
                 </>
             );
-        } else if (mode === 'editPackages') {
+        } else if (mode === 'edit') {
             return (
                 <>
                     <h1 style={{ textAlign: "center" }}>Warehouse:  {warehouse.city},{warehouse.state}</h1>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
                         <h4 style={{ textAlign: "center" }}>Trucks</h4>
-                        <TruckList warehouse={warehouse} />
+                        <TruckList warehouse={warehouse} mode={mode}/>
                     </Card>
                     <Card style={{ border: "none", width: "90%", marginLeft: "5%", alignContent: "center" }}>
                         <Button style={{padding:0,width:'30%',marginLeft:"35%"}} onClick={() => { setMode('read'); updateWarehouse()}}>Save</Button>

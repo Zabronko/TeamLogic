@@ -47,5 +47,13 @@ public class GenericService {
 		truckRepository.save(truck);
 	}
 
+
+	public Truck updateTruck(int statusId, int truckId, int warehouseId) {
+		Truck truck = truckRepository.findById(truckId).get();
+		truck.setWarehouse(warehouseRepository.findById(warehouseId).get());
+		truck.setStatus(statusRepository.findById(statusId).get());
+		return truckRepository.save(truck);
+	}
+
 	
 }
