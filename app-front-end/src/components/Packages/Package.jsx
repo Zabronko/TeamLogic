@@ -3,13 +3,6 @@ import { useRef } from "react";
 
 export const Package = ({ mode, pack, warehouse }) => {
 
-    warehouse.trucks.forEach((truck) => {
-        truck.packages.forEach((pack2) => {
-            if (pack2.id === pack.id) {
-                pack.truck = truck;
-            }
-        })
-    })
 
     const selectedRef = useRef(pack.truck !== undefined ? pack.truck.id : "In Warehouse");
 
@@ -32,7 +25,7 @@ export const Package = ({ mode, pack, warehouse }) => {
                     <input onChange={(e) => { pack.description = e.target.value }} placeholder={pack.description} />
                 </Form></td>
                 <td>{warehouse.city},{warehouse.state}</td>
-                <td><select defaultValue={pack.truck !== undefined ? pack.truck.id : selectedRef.current} onChange={(e) => { e.target.value !== "In Warehouse" ? pack.truck = warehouse.trucks.filter(data => data.id === parseInt(e.target.value))[0] : pack.truck=undefined }}>
+                <td><select defaultValue={pack.truck !== undefined ? pack.truck.id : selectedRef.current} onChange={(e) => {e.target.value !== "In Warehouse"?pack.truck = warehouse.trucks.filter(data => data.id === parseInt(e.target.value))[0]:pack.truck=undefined}}>
                     <option value="In Warehouse">In Warehouse</option>
                     {warehouse.trucks.map((truck) => {
                         return <option key={truck.id} value={truck.id} >{truck.id}</option>

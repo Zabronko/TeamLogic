@@ -21,7 +21,7 @@ create table Trucks (
 	truckId INT AUTO_INCREMENT Primary Key,
 	type VARCHAR(50) not null DEFAULT 'Delivery',
 	capacity INT not null DEFAULT 50,
-    warehouseId INT not null,
+    warehouseId INT,
     statusId INT not null DEFAULT 1,
     
     foreign key (warehouseId) references Warehouses(warehouseId),
