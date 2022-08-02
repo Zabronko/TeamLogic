@@ -21,7 +21,7 @@ export const Customers = () => {
     </Card>
     <Card>
       <Card.Body>
-        <CustomerComponent customers={customers}/>
+        <CustomerComponent customers={customers} />
       </Card.Body>
     </Card>
     </>
