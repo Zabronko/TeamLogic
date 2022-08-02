@@ -42,10 +42,4 @@ public class TruckController {
 	}
 	
 	
-	@PutMapping
-	public Warehouse updateAll(@RequestParam int warehouseId, @RequestBody List<Truck> trucks) {
-		System.out.println(trucks);
-		return service.updateAllTrucks(warehouseId, trucks);
-	}
-	
 }

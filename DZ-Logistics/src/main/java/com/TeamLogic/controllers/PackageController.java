@@ -34,8 +34,9 @@ public class PackageController {
 	}
 	
 	@PutMapping()
-	public Warehouse updateAll(@RequestParam int warehouseId, @RequestBody() List<Package> packages) {
-		return service.updateAllPackages(warehouseId, packages);
+	public void updateAll(@RequestParam int warehouseId, @RequestBody() String Json) {
+		System.out.println(Json);
+		//return service.updateAllPackages(warehouseId, packages);
 	}
 
 	@GetMapping("/customer{id}")
@@ -44,8 +45,8 @@ public class PackageController {
 	}
 	
 	@PutMapping("/new")
-	public Package save(@RequestBody Package pack) {
-		return repository.save(pack);
+	public Package save(@RequestBody Package pack, @RequestParam int warehouseId) {
+		return service.savePackage(pack, warehouseId);
 	}
 
 }

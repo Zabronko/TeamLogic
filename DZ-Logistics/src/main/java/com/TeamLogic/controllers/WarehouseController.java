@@ -46,11 +46,16 @@ public class WarehouseController {
 	
 	@PutMapping("/{id}")
 	public Warehouse update(@PathVariable int id, @RequestBody Warehouse warehouse) {
-		if(repository.existsById(id)) {
-			warehouse.setId(id);
-			return repository.save(warehouse);
-		} else {
-			throw new IllegalArgumentException("ID Doesnt exist");
+		for(Package p: warehouse.getPackages()) {
+			p.setWarehouse(warehouse);
 		}
+		for(Truck t: warehouse.getTrucks()) {
+			t.setWarehouse(warehouse);
+			for(Package p:t.getPackages()) {
+				p.setWarehouse(warehouse);
+				p.setTruck(t);
+			}
+		}
+		return service.updateAll(warehouse);
 	}
 }

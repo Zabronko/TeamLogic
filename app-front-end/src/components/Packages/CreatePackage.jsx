@@ -13,12 +13,9 @@ export const CreatePackage = ({customerId, packages, setPackages}) => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const { data } = await axios.put('http://localhost:8080/packages/new',
+            const { data } = await axios.put(`http://localhost:8080/packages/new?warehouseId=${warehouseRef.current.value}`,
             {
                 description: descriptionRef.current.value,
-                warehouse: {
-                    id: warehouseRef.current.value
-                },
                 status: {
                     id: 1,
                     status: "Idle"

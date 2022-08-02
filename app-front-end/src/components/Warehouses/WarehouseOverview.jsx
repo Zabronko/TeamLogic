@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { Card, Button } from "react-bootstrap";
 import { PackageList } from "../Packages/PackageList";
 import { TruckList } from "../Trucks/TruckList";
@@ -17,32 +17,24 @@ export const WarehouseOverview = () => {
     }, []);
 
     const updateWarehouse = () => {
-        warehouse.trucks.forEach((truck) => {
-            truck.packages = [];
-            warehouse.packages.map((pack) => {
-                if(pack.truck !== undefined) {
-                    if(pack.truck.id === truck.id) {
-                        truck.packages.push(pack);
-                    }
-                }
-                pack.truck = undefined   
-            })
-            console.log(truck);
+        warehouse.packages.forEach((pack) => {
+            if(pack.truck !== undefined) {
+                pack.status.id = 3;
+                warehouse.trucks.forEach((truck) => {
+                    truck.packages = truck.packages.filter(data => data.id !== pack.id);
+                })
+                pack.truck.packages.push(pack);
+                pack.truck = undefined;
+            }else {
+                pack.status.id = 1;
+                warehouse.trucks.forEach((truck) => {
+                    truck.packages = truck.packages.filter(data => data.id !== pack.id);
+                })
+                pack.truck = undefined;
+            }
         })
-
-        const trucks = warehouse.trucks;
-        const packages = warehouse.packages;
-        trucks.map((truck) => (
-            truck.packages.map((pack) => (
-                packages.filter(data => data.id !== pack.id)
-            ))
-        ))
-
-        axios.put(`http://localhost:8080/trucks?warehouseId=${warehouse.id}`, trucks)
-            .then(res => setWarehouse(res.data));
-
-        axios.put(`http://localhost:8080/packages?warehouseId=${warehouse.id}`, packages)
-            .then(res => setWarehouse(res.data));
+        axios.put(`http://localhost:8080/warehouses/${warehouse.id}`, warehouse)
+        .then(res => setWarehouse(res.data));
 
     }
 
