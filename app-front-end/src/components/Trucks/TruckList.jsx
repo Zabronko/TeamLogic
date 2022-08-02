@@ -10,9 +10,10 @@ export const TruckList = ({warehouse}) => {
                     <tr>
                         <td>ID</td>
                         <td>Type</td>
-                        <td>Warehouse</td>
+                        <td>Location</td>
                         <td>Number of Packages</td>
                         <td>Capacity</td>
+                        <td>To:</td>
                         <td>Status</td>
                     </tr>
                 </thead>

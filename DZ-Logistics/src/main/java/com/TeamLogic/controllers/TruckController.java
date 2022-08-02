@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TeamLogic.Services.GenericService;
+import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
 import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.TruckRepository;
@@ -41,5 +43,9 @@ public class TruckController {
 		return repository.findById(id);
 	}
 	
+	@PostMapping
+	public void saveTruck(@RequestBody Truck truck, @RequestParam int warehouseId) {
+		service.saveTruck(truck, warehouseId);
+	}
 	
 }
