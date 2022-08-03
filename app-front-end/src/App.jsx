@@ -16,10 +16,10 @@ function App() {
         <Nav.Link href="/customers">Customers</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/warehouses">Warehouses</Nav.Link>
+        <Nav.Link href="/packages">Packages</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/packages">Packages</Nav.Link>
+        <Nav.Link href="/warehouses">Warehouses</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/trucks">Trucks</Nav.Link>

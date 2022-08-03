@@ -24,9 +24,10 @@ create table Warehouses (
 
 create table Trucks (
 	truckId INT AUTO_INCREMENT Primary Key,
-	type VARCHAR(50),
-    warehouseId INT not null,
-    statusId INT not null,
+	type VARCHAR(50) not null DEFAULT 'Delivery',
+	capacity INT not null DEFAULT 50,
+    warehouseId INT,
+    statusId INT not null DEFAULT 1,
     
     foreign key (warehouseId) references Warehouses(warehouseId),
     foreign key (statusId) references Status(statusId)
@@ -35,15 +36,19 @@ create table Trucks (
 
 create table Packages (
 	packageId INT AUTO_INCREMENT Primary Key,
-	description VARCHAR(50),
+	description VARCHAR(50) not null DEFAULT('none'),
 	warehouseId INT,
     truckId INT,
     customerId INT,
+    statusId INT not null DEFAULT(1),
     
     foreign key (warehouseId) references Warehouses(warehouseId),
     foreign key (truckId) references Trucks(truckId),
     foreign key (customerId) references Customers(customerId)
 );
+
+
+
 
 
 

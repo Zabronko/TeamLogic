@@ -37,7 +37,7 @@ export const CreatePackage = ({customerId, packages, setPackages}) => {
     }
 
   return (
-    <Card>
+    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
     <Form onSubmit={handleSubmit}>
         <Row>
         <Col>

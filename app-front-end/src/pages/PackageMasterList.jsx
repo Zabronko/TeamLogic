@@ -21,10 +21,7 @@ export const PackageMasterList = () => {
 
 
   return (
-    <>
-{/*    <Card>
-        <CreatePackage packs={packs} setPacks={setPacks}/>
-    </Card> */}
+    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
     <Table striped bordered hover>               
     <thead>
         <tr>
@@ -47,6 +44,6 @@ export const PackageMasterList = () => {
     </tbody>
 
 </Table>
-</>
+</Card>
   )
 }

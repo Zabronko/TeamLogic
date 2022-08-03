@@ -31,7 +31,7 @@ export const CustomerInfo = () => {
   
   return (
     <>
-    <Card>
+    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
     {!renderEditCustomer && <> 
     <div>{customer.name}</div>
     <div>{customer.address}</div>
@@ -44,7 +44,7 @@ export const CustomerInfo = () => {
     </Card>
     <Button onClick={() => setRenderAddPackage(!renderAddPackage)}>add package</Button>
     {renderAddPackage && <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>}
-    <Card>
+    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
     {packages.map((pack) => {
                         return <CustomerPackage key={pack.id} pack={pack}/>
                     })}
