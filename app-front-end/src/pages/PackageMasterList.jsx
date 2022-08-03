@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, Card } from 'react-bootstrap';
-import { CreatePackage } from '../components/Packages/CreatePackage';
 import { useNavigate } from 'react-router-dom';
 
 export const PackageMasterList = () => {
@@ -11,6 +10,8 @@ export const PackageMasterList = () => {
 
     const handleClick = async() => {
         // get warehouse id and route 
+        //axios.get('http://localhost:8080/packages')
+        //.then(res => setPacks(res.data));
       
     }
 
@@ -27,7 +28,9 @@ export const PackageMasterList = () => {
         <tr>
             <th>ID</th>
             <th>Description</th>
+            <th>Customer</th>
             <th>status</th>
+
         </tr>
     </thead>
     <tbody>
@@ -36,6 +39,7 @@ export const PackageMasterList = () => {
                     <tr onClick={handleClick} key={pack.id}>
                         <td >{pack.id}</td>
                         <td>{pack.description}</td>
+                        <td>{pack.customer.name}</td>
                         <td>{pack.status.status}</td>
                     </tr>
 

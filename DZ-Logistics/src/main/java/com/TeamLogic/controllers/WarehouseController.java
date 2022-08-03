@@ -58,4 +58,11 @@ public class WarehouseController {
 		}
 		return service.updateAll(warehouse);
 	}
+	
+//	@GetMapping("/packageId={id}")
+//	public Warehouse getByPackageId(@PathVariable int id) {
+//		return repository.findByPackages_Package_PackageId(id);
+//	}
+	
+	
 }

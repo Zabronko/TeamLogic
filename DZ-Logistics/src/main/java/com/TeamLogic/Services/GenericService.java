@@ -54,6 +54,9 @@ public class GenericService {
 		truck.setStatus(statusRepository.findById(statusId).get());
 		return truckRepository.save(truck);
 	}
-
 	
+	// work in progress DL
+	public int warehouseIdbyPackageId(int packId) {
+		return 0;
+	}
 }
