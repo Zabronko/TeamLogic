@@ -8,6 +8,7 @@ export const Truck = ({ truck, warehouse, mode }) => {
         return truck.packages !== undefined ? truck.packages.length : 'None';
     }
     const [status,setStatus] = useState(truck.status.id)
+    console.log(truck);
 
     if(mode === 'read') {
         return (

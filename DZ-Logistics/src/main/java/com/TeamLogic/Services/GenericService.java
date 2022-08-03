@@ -1,16 +1,17 @@
 package com.TeamLogic.Services;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.TeamLogic.beans.Customer;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
 import com.TeamLogic.beans.Warehouse;
+import com.TeamLogic.repositories.CustomerRepository;
 import com.TeamLogic.repositories.PackageRepository;
 import com.TeamLogic.repositories.StatusRepository;
 import com.TeamLogic.repositories.TruckRepository;
@@ -27,6 +28,8 @@ public class GenericService {
 	private StatusRepository statusRepository;
 	@Autowired
 	private PackageRepository packageRepository;
+	@Autowired
+	private CustomerRepository customerRepository;
 
 
 	public Warehouse updateAll(Warehouse warehouse) {
@@ -54,6 +57,26 @@ public class GenericService {
 		truck.setStatus(statusRepository.findById(statusId).get());
 		return truckRepository.save(truck);
 	}
+
+	
+	public int getCutomerIdByUsername() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        String userName = null;
+        if (authentication != null) {
+
+                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+                userName = userDetails.getUsername();
+
+        }
+        if(!userName.equals(null)) {
+        	return (int) customerRepository.findByUsername(userName).getId();
+        }else {
+        	return 0;
+        }
+    }
+
+
 	
 	// work in progress DL
 	public int warehouseIdbyPackageId(int packId) {

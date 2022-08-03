@@ -1,3 +1,4 @@
+
 create table Status (
 	statusId INT AUTO_INCREMENT Primary Key,
 	status VARCHAR(50)
@@ -40,6 +41,22 @@ create table Packages (
     foreign key (warehouseId) references Warehouses(warehouseId),
     foreign key (truckId) references Trucks(truckId),
     foreign key (customerId) references Customers(customerId)
+);
+
+-- users table
+create table Users (
+	username VARCHAR(50) Primary Key,
+	password VARCHAR(100) not null,
+	enabled boolean not null,
+	customerId INT,
+	
+	foreign key (customerId) references Customers(customerId)
+);
+
+create table authorities (
+	username VARCHAR(50) not null,
+	authority VARCHAR(50) not null,
+	foreign key (username) references users(username)
 );
 
 

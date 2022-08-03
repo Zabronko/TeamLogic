@@ -1,3 +1,4 @@
+
 -- status
 insert into Status (status) values ('Idle');
 insert into Status (status) values ('Driving');
@@ -83,3 +84,10 @@ insert into Packages (warehouseId, customerId) values (9, 18);
 insert into Packages (warehouseId, customerId) values (1, 19);
 insert into Packages (warehouseId, customerId) values (2, 20);
 
+-- users
+insert into Users(username,password,enabled) values('employee','$2a$04$dGNVCgMxXW4WssgC3W1sy.n9fAJAe2DKfQWKcsfNZgeuF0KJKZ7kq', true);
+insert into Users(username,password,enabled,customerId) values('EddyW','$2a$04$hTNib9WfCjpZkWrUE8X0ceBlwyNen.C1MUtS0iowTozo3M1uLtZ06',true,1);
+
+-- authorities
+insert into authorities values('employee', 'ROLE_ADMIN');
+insert into authorities values('EddyW', 'ROLE_USER');
