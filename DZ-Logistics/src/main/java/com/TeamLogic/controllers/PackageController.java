@@ -1,6 +1,5 @@
 package com.TeamLogic.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.TeamLogic.DTOs.PackageDTO;
 import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.repositories.PackageRepository;
@@ -30,24 +28,9 @@ public class PackageController {
 	private PackageRepository repository;
 	
 	
-	public PackageDTO convertToDTO(Package p) {
-		PackageDTO dto;
-		if(p.getTruck()!=null) {
-			dto = new PackageDTO(p.getId(),p.getDescription(),p.getWarehouse().getId(),p.getTruck().getId(),p.getCustomer().getId(),p.getStatus().getStatus());
-		}else {
-			dto = new PackageDTO(p.getId(),p.getDescription(),p.getWarehouse().getId(),p.getCustomer().getId(),p.getStatus().getStatus());
-		}
-		return dto;
-	}
-	
 	@GetMapping
-	public List<PackageDTO> findAll() {
-		List<Package> packs = repository.findAll();
-		List<PackageDTO> packsDTOs = new ArrayList<>();
-		for(Package p:packs) {
-			packsDTOs.add(convertToDTO(p));
-		}
-		return packsDTOs;	
+	public List<Package> findAll() {
+		return repository.findAll();
 	}
 	
 	
