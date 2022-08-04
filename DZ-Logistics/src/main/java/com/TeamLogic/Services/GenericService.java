@@ -1,20 +1,12 @@
 package com.TeamLogic.Services;
 
-<<<<<<< HEAD
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-=======
 import java.util.Random;
->>>>>>> d4d91cc9fe6cd95af0ce25596b937d32a69f52b0
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -93,8 +85,6 @@ public class GenericService {
     }
 
 
-	
-<<<<<<< HEAD
 	// work in progress DL
 	public int warehouseIdbyPackageId(int packId) {
 		return 0;
@@ -118,7 +108,4 @@ public class GenericService {
 		}
 		
 	}
-=======
-
->>>>>>> d4d91cc9fe6cd95af0ce25596b937d32a69f52b0
 }
