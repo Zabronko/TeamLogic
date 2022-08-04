@@ -40,12 +40,18 @@ export const CustomerInfo = () => {
     <div>City: {customer.city}</div>
     <div>State: {customer.state}</div>
     </>}
-    {renderEditCustomer && <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>}
+    {renderEditCustomer &&
+     <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>
+     }
 
-    {!renderEditCustomer && <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>edit customer</Button></div>}
+    {!renderEditCustomer &&
+     <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>Edit Profile</Button></div>
+     }
     </Card>
-    <div style={{width: "80%", alignContent:"center", marginLeft:"10%"}}><Button onClick={() => setRenderAddPackage(!renderAddPackage)}>add package</Button></div>
-    {renderAddPackage && <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>}
+    <div style={{width: "80%", alignContent:"center", marginLeft:"10%"}}><Button onClick={() => setRenderAddPackage(!renderAddPackage)}>Request Package</Button></div>
+    {renderAddPackage && 
+    <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>
+    }
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
     {packages.map((pack) => {
                         return <CustomerPackage key={pack.id} pack={pack}/>

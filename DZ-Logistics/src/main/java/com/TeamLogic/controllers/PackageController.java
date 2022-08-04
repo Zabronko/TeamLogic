@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,9 +46,9 @@ public class PackageController {
 		return repository.findByCustomerId(id);
 	}
 	
-	@PutMapping("/new")
-	public Package save(@RequestBody Package pack, @RequestParam int warehouseId) {
-		return service.savePackage(pack, warehouseId);
+	@PostMapping("/new")
+	public Package save(@RequestBody Package pack) {
+		return service.savePackage(pack);
 	}
 
 }

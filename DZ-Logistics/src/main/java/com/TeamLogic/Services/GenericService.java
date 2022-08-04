@@ -1,5 +1,7 @@
 package com.TeamLogic.Services;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -39,7 +41,9 @@ public class GenericService {
 	}
 
 
-	public Package savePackage(Package pack, int warehouseId) {
+	public Package savePackage(Package pack) {
+		Random r = new Random();
+		int warehouseId = r.nextInt(9-1)+1;
 		pack.setWarehouse(warehouseRepository.findById(warehouseId).get());
 		return packageRepository.save(pack);
 	}
@@ -78,4 +82,5 @@ public class GenericService {
 
 
 	
+
 }
