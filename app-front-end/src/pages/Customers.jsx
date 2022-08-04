@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { CustomerComponent } from '../components/Customers/CustomerComponent';
-import { AddCustomer } from "../components/Customers/AddCustomer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -15,9 +14,6 @@ export const Customers = () => {
   return (
     <>
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
-      <Card.Body>
-        <AddCustomer customers={customers} setCustomers={setCustomers}/>
-      </Card.Body>
     </Card>
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
       <Card.Body>

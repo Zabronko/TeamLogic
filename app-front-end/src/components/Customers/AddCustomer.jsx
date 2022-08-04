@@ -1,11 +1,8 @@
 import { useRef} from "react";
 import axios from "axios"; 
 
+import {Form, Button, Row, Col} from 'react-bootstrap';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 export const AddCustomer = ({customers, setCustomers}) => {
     const nameRef = useRef();
@@ -37,36 +34,45 @@ export const AddCustomer = ({customers, setCustomers}) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-        <Row>
-        <Col>
+        <Row className="mb-3">
+        <Form.Group as={Row} >
+          <Form.Label>UserName</Form.Label>
+          <Form.Control type="username" placeholder="Enter UserName" />
+        </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+        </Row>
+        <Row className="mb-3">
             <Form.Label >Name:</Form.Label>
             <Form.Control name="name" ref={nameRef} required placeholder='Enter Name of Customer' />
-        </Col>
-        <Col>
+        </Row>
+        <Row className="mb-3">
             <Form.Label >Address:</Form.Label>
             <Form.Control name="address" ref={addressRef} required placeholder='Enter Address of Customer' />
-        </Col>
-        <Col>
-            <Form.Label >City:</Form.Label>
-            <Form.Control name="city" ref={cityRef} required placeholder='Enter Customer City' />
-        </Col>
-        <Col>
+        </Row>
+        <Row className="mb-3">
+            <Form.Group  as={Col}>
+                <Form.Label >City:</Form.Label>
+                <Form.Control name="city" ref={cityRef} required placeholder='Enter Customer City' />
+            </Form.Group>
+            <Form.Group  as={Col}>
             <Form.Label >State:</Form.Label>
             <Form.Select name="state" ref={stateRef} required >
-            <option></option>
-            <option>AR</option>
-            <option>LA</option>
-            <option>NM</option>
-            <option>OK</option>
-            <option>TX</option>
+                <option value="">State</option>
+                <option>AR</option>
+                <option>LA</option>
+                <option>NM</option>
+                <option>OK</option>
+                <option>TX</option>
             </Form.Select>
-        </Col>
+            </Form.Group>
+        </Row>
         
-  
+    <Row className="mb-3">
+        <Button variant="success" type="submit" > Sign Up </Button>
     </Row>
-    <Button variant="success" type="submit" >
-        Submit New Customer
-        </Button>
     </Form>
   )
 }

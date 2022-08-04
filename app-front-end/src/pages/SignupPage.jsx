@@ -9,7 +9,7 @@ const [customers, setCustomers] = useState([]);
 
   return (
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
-    <Card.Body>
+    <Card.Body >
       <AddCustomer customers={customers} setCustomers={setCustomers}/>
     </Card.Body>
   </Card>

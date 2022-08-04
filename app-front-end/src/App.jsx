@@ -19,8 +19,8 @@ function App() {
         <Nav.Link href="/trucks">Trucks</Nav.Link>
       </Nav>
       <Nav>
-        <Button variant="outline-secondary">Sign In</Button>
-        <Button variant="outline-secondary">Sign Up</Button>
+        <Button href="/signin" variant="outline-secondary">Sign In</Button>
+        <Button href="/signup" variant="outline-secondary">Sign Up</Button>
       </Nav>
       </Container> 
     </Navigation>
