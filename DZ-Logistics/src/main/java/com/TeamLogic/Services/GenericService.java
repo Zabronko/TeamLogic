@@ -1,9 +1,13 @@
 package com.TeamLogic.Services;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+=======
+import java.util.Random;
+>>>>>>> d4d91cc9fe6cd95af0ce25596b937d32a69f52b0
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,7 +53,9 @@ public class GenericService {
 	}
 
 
-	public Package savePackage(Package pack, int warehouseId) {
+	public Package savePackage(Package pack) {
+		Random r = new Random();
+		int warehouseId = r.nextInt(9-1)+1;
 		pack.setWarehouse(warehouseRepository.findById(warehouseId).get());
 		return packageRepository.save(pack);
 	}
@@ -88,6 +94,7 @@ public class GenericService {
 
 
 	
+<<<<<<< HEAD
 	// work in progress DL
 	public int warehouseIdbyPackageId(int packId) {
 		return 0;
@@ -111,4 +118,7 @@ public class GenericService {
 		}
 		
 	}
+=======
+
+>>>>>>> d4d91cc9fe6cd95af0ce25596b937d32a69f52b0
 }
