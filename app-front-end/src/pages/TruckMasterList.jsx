@@ -33,7 +33,7 @@ export const TruckMasterList = () => {
                 <tbody>
                     {warehouses.map((warehouse) => {
                         return warehouse.trucks.map((truck) => {
-                            return <Truck key={truck.id} truck={truck} warehouse={warehouse} />
+                            return <Truck key={truck.id} mode={'read'} truck={truck} warehouse={warehouse} />
                         })
                     })}
                 </tbody>

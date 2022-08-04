@@ -16,7 +16,10 @@ export const PackageMasterList = () => {
 
     useEffect(() => {
         axios.get('http://localhost:8080/packages')
-        .then(res => setPacks(res.data));
+        .then(res => {
+            console.log(res.data);
+            setPacks(res.data)
+        });
     },[]);
 
 
@@ -36,7 +39,7 @@ export const PackageMasterList = () => {
                     <tr onClick={handleClick} key={pack.id}>
                         <td >{pack.id}</td>
                         <td>{pack.description}</td>
-                        <td>{pack.status.status}</td>
+                        <td>{pack.status}</td>
                     </tr>
 
                     );

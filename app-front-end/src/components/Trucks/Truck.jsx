@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
-import axios from 'axios';
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export const Truck = ({ truck, warehouse, mode }) => {
 
@@ -8,7 +7,6 @@ export const Truck = ({ truck, warehouse, mode }) => {
         return truck.packages !== undefined ? truck.packages.length : 'None';
     }
     const [status,setStatus] = useState(truck.status.id)
-    console.log(truck);
 
     if(mode === 'read') {
         return (
@@ -35,7 +33,7 @@ export const Truck = ({ truck, warehouse, mode }) => {
                 <td>
                     {truck.packages.length > 0 ? `${truck.packages[0].customer.city},${truck.packages[0].customer.state}` : ""}
                 </td>
-                <td><Button style={{backgroundColor:"white", color:"black"}} onClick={() => {status===1?truck.status.id=3:truck.status.id=1; setStatus(truck.status.id)}} >{status===1?'parked':'departed'}</Button></td>
+                <td><Button style={{backgroundColor:"white", color:"black"}} onClick={() => {status===1?truck.status.id=2:truck.status.id=1; setStatus(truck.status.id)}} >{status===1?'parked':'departed'}</Button></td>
             </tr>
         );
     }

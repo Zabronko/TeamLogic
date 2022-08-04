@@ -35,12 +35,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.httpBasic();
 
-		http.authorizeRequests().mvcMatchers("/warehouses/**").hasAnyRole("ADMIN");
-		http.authorizeRequests().mvcMatchers("/trucks/**").hasAnyRole("ADMIN");
-		http.authorizeRequests().mvcMatchers("/customers").hasAnyRole("ADMIN");
-		http.authorizeRequests().mvcMatchers("/customers/{id}").hasAnyRole("ADMIN","USER").and().addFilterAfter(new CustomerCheckFilter(), BasicAuthenticationFilter.class);
-		http.authorizeRequests().mvcMatchers("/packages/customer**").hasAnyRole("ADMIN","USER");
-		http.authorizeRequests().mvcMatchers("/packages/**").hasAnyRole("ADMIN");
+//		http.authorizeRequests().mvcMatchers("/warehouses/**").hasAnyRole("ADMIN");
+//		http.authorizeRequests().mvcMatchers("/trucks/**").hasAnyRole("ADMIN");
+//		http.authorizeRequests().mvcMatchers("/customers").hasAnyRole("ADMIN");
+//		http.authorizeRequests().mvcMatchers("/customers/{id}").hasAnyRole("ADMIN","USER");//.and().addFilterAfter(new CustomerCheckFilter(), BasicAuthenticationFilter.class);
+//		http.authorizeRequests().mvcMatchers("/packages/customer**").hasAnyRole("ADMIN","USER");
+//		http.authorizeRequests().mvcMatchers("/packages/**").hasAnyRole("ADMIN");
 		http.authorizeRequests().mvcMatchers("/**").permitAll();
 		http.logout();
 	}

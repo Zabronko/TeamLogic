@@ -30,9 +30,7 @@ export const Package = ({ mode, pack, warehouse, type }) => {
                     <option value="In Warehouse">In Warehouse</option>
                     {warehouse.trucks.map((truck) => {
                         if(truck.status.id === 1) {
-                            if(type === undefined) {
-                                return <option key={truck.id} value={truck.id} >{truck.id}</option>
-                            } else if(type === 'deliver') {
+                            if(type === 'deliver') {
                                 if(truck.type === 'Delivery') {
                                     return <option key={truck.id} value={truck.id} >{truck.id}</option>
                                 }

@@ -1,13 +1,9 @@
 package com.TeamLogic.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.dialect.Database;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.TeamLogic.DTOs.PackageDTO;
 import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
-import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.PackageRepository;
 
 @RestController
@@ -33,9 +29,25 @@ public class PackageController {
 	@Autowired
 	private PackageRepository repository;
 	
+	
+	public PackageDTO convertToDTO(Package p) {
+		PackageDTO dto;
+		if(p.getTruck()!=null) {
+			dto = new PackageDTO(p.getId(),p.getDescription(),p.getWarehouse().getId(),p.getTruck().getId(),p.getCustomer().getId(),p.getStatus().getStatus());
+		}else {
+			dto = new PackageDTO(p.getId(),p.getDescription(),p.getWarehouse().getId(),p.getCustomer().getId(),p.getStatus().getStatus());
+		}
+		return dto;
+	}
+	
 	@GetMapping
-	public List<Package> findAll() {
-		return repository.findAll();
+	public List<PackageDTO> findAll() {
+		List<Package> packs = repository.findAll();
+		List<PackageDTO> packsDTOs = new ArrayList<>();
+		for(Package p:packs) {
+			packsDTOs.add(convertToDTO(p));
+		}
+		return packsDTOs;	
 	}
 	
 	
@@ -47,7 +59,7 @@ public class PackageController {
 
 	@GetMapping("/customer{id}")
 	public List<Package> getPackagesByCustomerId(@PathVariable int id) {
-		return repository.findByCustomerId(id);	
+		return repository.findByCustomerId(id);
 	}
 	
 	@PutMapping("/new")
