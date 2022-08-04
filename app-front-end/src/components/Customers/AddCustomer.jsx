@@ -53,6 +53,7 @@ export const AddCustomer = ({customers, setCustomers}) => {
         <Col>
             <Form.Label >State:</Form.Label>
             <Form.Select name="state" ref={stateRef} required >
+            <option></option>
             <option>AR</option>
             <option>LA</option>
             <option>NM</option>

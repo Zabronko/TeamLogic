@@ -11,6 +11,8 @@ export const CreatePackage = ({customerId, packages, setPackages}) => {
     const descriptionRef = useRef();
     const warehouseRef = useRef();
 
+
+    
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();

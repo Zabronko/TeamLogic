@@ -57,6 +57,7 @@ public class GenericService {
 		truck.setStatus(statusRepository.findById(statusId).get());
 		return truckRepository.save(truck);
 	}
+
 	
 	public int getCutomerIdByUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -75,5 +76,10 @@ public class GenericService {
         }
     }
 
+
 	
+	// work in progress DL
+	public int warehouseIdbyPackageId(int packId) {
+		return 0;
+	}
 }
