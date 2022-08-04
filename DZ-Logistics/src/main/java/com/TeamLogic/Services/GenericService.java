@@ -11,16 +11,19 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.TeamLogic.beans.Customer;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
+import com.TeamLogic.beans.User;
 import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.CustomerRepository;
 import com.TeamLogic.repositories.PackageRepository;
 import com.TeamLogic.repositories.StatusRepository;
 import com.TeamLogic.repositories.TruckRepository;
+import com.TeamLogic.repositories.UserRepository;
 import com.TeamLogic.repositories.WarehouseRepository;
 
 @Service
@@ -36,6 +39,10 @@ public class GenericService {
 	private PackageRepository packageRepository;
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private UserRepository userRepository;
+	//@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 
 	public Warehouse updateAll(Warehouse warehouse) {
@@ -88,6 +95,13 @@ public class GenericService {
 	// work in progress DL
 	public int warehouseIdbyPackageId(int packId) {
 		return 0;
+	}
+	
+	
+	// register user
+	public void register(User user) {
+		String hash = passwordEncoder.encode(user.getPassword());
+		user.setPassword(hash); 
 	}
 
 

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Customer;
-import com.TeamLogic.beans.User;
 import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.CustomerRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,8 +42,8 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public Customer save(@RequestBody User user) {
-		return repository.save(user.getCustomer());
+	public Customer save(@RequestBody Customer customer) {
+		return repository.save(customer);
 	}
 	
 	@GetMapping("/{id}")

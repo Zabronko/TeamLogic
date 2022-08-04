@@ -15,6 +15,10 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
+	private String password;
+	
+	private boolean enabled;
+	
 	@OneToOne()
 	@JoinColumn(name="customerId")
 	private Customer customer;
@@ -22,6 +26,15 @@ public class User {
 	public User() {
 		super();
 	}
+	
+
+	public User(String username, String password, Customer customer) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.customer = customer;
+	}
+
 
 	public String getUsername() {
 		return username;
@@ -37,6 +50,22 @@ public class User {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	
