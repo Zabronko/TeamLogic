@@ -3,6 +3,7 @@
 insert into Status (status) values ('Idle');
 insert into Status (status) values ('Driving');
 insert into Status (status) values ('On Truck');
+insert into Status (status) values ('In Route');
 insert into Status (status) values ('Delivered');
 
 -- customers

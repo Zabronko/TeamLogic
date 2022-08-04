@@ -108,6 +108,7 @@ public class Package {
 		this.status = status;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Package [id=" + id + ", description=" + description + ", customer=" + customer + ", status=" + status + "]";

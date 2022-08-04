@@ -19,7 +19,11 @@ export const WarehouseOverview = () => {
     const updateWarehouse = () => {
         warehouse.packages.forEach((pack) => {
             if(pack.truck !== undefined) {
-                pack.status.id = 3;
+                if(pack.truck.status.id===1) {
+                    pack.status.id = 3;
+                }else {
+                    pack.status.id = 4;
+                }
                 warehouse.trucks.forEach((truck) => {
                     truck.packages = truck.packages.filter(data => data.id !== pack.id);
                 })
