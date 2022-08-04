@@ -1,7 +1,17 @@
 package com.TeamLogic.Services;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -81,5 +91,24 @@ public class GenericService {
 	// work in progress DL
 	public int warehouseIdbyPackageId(int packId) {
 		return 0;
+	}
+
+
+	public ResponseEntity<?> getCustomerPackagesIfCorrectCustomer(int id) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUserName ="";
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    currentUserName = authentication.getName();
+		}
+		Customer customerCheck = customerRepository.findByUsername(currentUserName);
+		if(authentication.getAuthorities().toArray()[0].equals(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+			return new ResponseEntity<>(packageRepository.findByCustomerId(id), HttpStatus.OK);
+		}
+		if(customerCheck.getId() == id) {
+			return new ResponseEntity<>(packageRepository.findByCustomerId(id), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 }

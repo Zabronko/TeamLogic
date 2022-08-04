@@ -9,9 +9,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-
-import com.TeamLogic.filters.CustomerCheckFilter;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -35,12 +32,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.httpBasic();
 
-//		http.authorizeRequests().mvcMatchers("/warehouses/**").hasAnyRole("ADMIN");
-//		http.authorizeRequests().mvcMatchers("/trucks/**").hasAnyRole("ADMIN");
-//		http.authorizeRequests().mvcMatchers("/customers").hasAnyRole("ADMIN");
-//		http.authorizeRequests().mvcMatchers("/customers/{id}").hasAnyRole("ADMIN","USER");//.and().addFilterAfter(new CustomerCheckFilter(), BasicAuthenticationFilter.class);
-//		http.authorizeRequests().mvcMatchers("/packages/customer**").hasAnyRole("ADMIN","USER");
-//		http.authorizeRequests().mvcMatchers("/packages/**").hasAnyRole("ADMIN");
+		http.authorizeRequests().mvcMatchers("/login").permitAll();
+		http.authorizeRequests().mvcMatchers("/signup").permitAll();
+		http.authorizeRequests().mvcMatchers("/warehouses/**").hasAnyRole("ADMIN");
+		http.authorizeRequests().mvcMatchers("/trucks/**").hasAnyRole("ADMIN");
+		http.authorizeRequests().mvcMatchers("/customers").hasAnyRole("ADMIN");
+		http.authorizeRequests().mvcMatchers("/customers/{id}").hasAnyRole("ADMIN");
+		http.authorizeRequests().mvcMatchers("/customers/{id}").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/packages/customer**").hasAnyRole("ADMIN","USER");
+		http.authorizeRequests().mvcMatchers("/packages/**").hasAnyRole("ADMIN");
 		http.authorizeRequests().mvcMatchers("/**").permitAll();
 		http.logout();
 	}

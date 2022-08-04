@@ -3,6 +3,7 @@ package com.TeamLogic.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +42,8 @@ public class PackageController {
 	}
 
 	@GetMapping("/customer{id}")
-	public List<Package> getPackagesByCustomerId(@PathVariable int id) {
-		return repository.findByCustomerId(id);
+	public ResponseEntity<?> getPackagesByCustomerId(@PathVariable int id) {
+		return service.getCustomerPackagesIfCorrectCustomer(id);
 	}
 	
 	@PutMapping("/new")
