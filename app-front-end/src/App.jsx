@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList} from "./pages"
-import { Nav } from 'react-bootstrap';
+import {Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList, SignupPage} from "./pages"
+import { Nav, Navbar, Button, Container} from 'react-bootstrap';
 import { Navigation } from './components/Navigation';
 
 
@@ -9,21 +9,20 @@ function App() {
 <>
 <BrowserRouter>
   <Navigation>
-      <Nav.Item>
+    <Navbar.Brand href="/">DZ logistics</Navbar.Brand>
+    <Container fluid>
+    <Nav as="h3" variant="tabs" >
         <Nav.Link href="/">Home</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
         <Nav.Link href="/customers">Customers</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
         <Nav.Link href="/packages">Packages</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
         <Nav.Link href="/warehouses">Warehouses</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
         <Nav.Link href="/trucks">Trucks</Nav.Link>
-      </Nav.Item>
+      </Nav>
+      <Nav>
+        <Button variant="outline-secondary">Sign In</Button>
+        <Button variant="outline-secondary">Sign Up</Button>
+      </Nav>
+      </Container> 
     </Navigation>
 
     <Routes>
@@ -34,6 +33,7 @@ function App() {
         <Route path ="/Warehouses/*" element={<WarehouseInfo />}></Route>
         <Route path ="/packages" element={<PackageMasterList />}></Route>
         <Route path ="/trucks" element={<TruckMasterList />}></Route>
+        <Route path ="/signup" element={<SignupPage />}></Route>
     </Routes>
 </BrowserRouter>
 </>

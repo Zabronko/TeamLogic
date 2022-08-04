@@ -78,8 +78,4 @@ public class GenericService {
 
 
 	
-	// work in progress DL
-	public int warehouseIdbyPackageId(int packId) {
-		return 0;
-	}
 }
