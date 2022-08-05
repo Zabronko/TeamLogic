@@ -103,6 +103,7 @@ public class GenericService {
 		}
 		if(customerCheck.getId() == id) {
 			return new ResponseEntity<>(packageRepository.findByCustomerId(id), HttpStatus.OK);
+			
 		}else {
 			return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
 		}

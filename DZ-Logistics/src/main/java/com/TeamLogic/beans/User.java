@@ -19,8 +19,17 @@ public class User {
 	@JoinColumn(name="customerId")
 	private Customer customer;
 	
+	@Column(name="password")
+	private String password;
+	
 	public User() {
 		super();
+	}
+	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
 	}
 
 	public String getUsername() {
@@ -37,6 +46,19 @@ public class User {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", customer=" + customer + ", password=" + password + "]";
 	}
 	
 	

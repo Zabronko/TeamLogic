@@ -1,30 +1,27 @@
 package com.TeamLogic.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
 import com.TeamLogic.beans.Warehouse;
-import com.TeamLogic.repositories.PackageRepository;
-import com.TeamLogic.repositories.TruckRepository;
 import com.TeamLogic.repositories.WarehouseRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/warehouses")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class WarehouseController {
 
 	@Autowired
@@ -33,9 +30,15 @@ public class WarehouseController {
 	@Autowired
 	private GenericService service;
 	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
 	@GetMapping
-	public List<Warehouse> findAll() throws JsonProcessingException {
-		return repository.findAll();
+	//@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> findAll() throws JsonProcessingException {
+		System.out.println("here");
+		//System.out.println(authenticationManager.authenticate(SecurityContextHolder.getContext().getAuthentication()));
+		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")

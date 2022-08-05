@@ -1,5 +1,10 @@
 server:
  port: 8080
+ servlet:
+  session:
+    cookie:
+      http-only: true
+      secure: true
  
 spring:    
   # use data.sql and schema.sql ONLY when using H2 database
@@ -16,3 +21,4 @@ spring:
      naming:
        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
      ddl-auto: none
+     
