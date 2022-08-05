@@ -1,5 +1,6 @@
 package com.TeamLogic.Services;
 
+import java.sql.Types;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,8 +106,16 @@ public class GenericService {
 	// register user
 	public void register(User user) {
 		String hash = passwordEncoder.encode(user.getPassword());
-		user.setPassword(hash);
-		user.setEnabled(true);
+		String username = user.getUsername();
+		user.setCustomer(customerRepository.save(user.getCustomer()));
+		
+		int userId = user.getCustomer().getId();
+		
+		String userSql = "insert into users values(?, ?, true, ?)";
+		String authSql = "insert into authorities values(?, 'ROLE_USER')";
+		jdbcTemplate.update(userSql, new Object[] { username, hash, userId}, new int[] { Types.VARCHAR, Types.VARCHAR, Types.INTEGER });
+		jdbcTemplate.update(authSql, new String[] { username }, new int[] { Types.VARCHAR });
+		
 	}
 
 
