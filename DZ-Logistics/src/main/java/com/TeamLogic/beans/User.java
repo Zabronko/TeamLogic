@@ -23,6 +23,7 @@ public class User {
 	@JoinColumn(name="customerId")
 	private Customer customer;
 	
+	
 	public User() {
 		super();
 	}

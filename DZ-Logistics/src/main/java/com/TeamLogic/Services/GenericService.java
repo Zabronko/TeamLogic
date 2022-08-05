@@ -5,13 +5,14 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.TeamLogic.beans.Customer;
@@ -41,8 +42,11 @@ public class GenericService {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private UserRepository userRepository;
-	//@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 
 	public Warehouse updateAll(Warehouse warehouse) {
@@ -101,7 +105,8 @@ public class GenericService {
 	// register user
 	public void register(User user) {
 		String hash = passwordEncoder.encode(user.getPassword());
-		user.setPassword(hash); 
+		user.setPassword(hash);
+		user.setEnabled(true);
 	}
 
 
