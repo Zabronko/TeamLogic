@@ -15,7 +15,7 @@ export const AddCustomer = () => {
     const handleSubmit = async (event) => {
         try {
         event.preventDefault();
-        const { data } = await axios.post('http://localhost:8080/customers',
+        const { data } = await axios.post('http://localhost:8080/signup',
         {
             username : usernameRef.current.value,
             password : passwordRef.current.value,
