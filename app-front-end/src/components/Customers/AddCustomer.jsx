@@ -4,24 +4,29 @@ import axios from "axios";
 import {Form, Button, Row, Col} from 'react-bootstrap';
 
 
-export const AddCustomer = ({customers, setCustomers}) => {
+export const AddCustomer = () => {
     const nameRef = useRef();
     const addressRef = useRef();
     const cityRef = useRef();
     const stateRef = useRef();
+    const usernameRef = useRef();
+    const passwordRef = useRef();
 
     const handleSubmit = async (event) => {
         try {
         event.preventDefault();
-        const { data } = await axios.post('http://localhost:8080/customers',
+        const { data } = await axios.post('http://localhost:8080/signup',
         {
-            name: nameRef.current.value,
-            address: addressRef.current.value,
-            city: cityRef.current.value,
-            state: stateRef.current.value
+            username : usernameRef.current.value,
+            password : passwordRef.current.value,
+            customer : {
+                name: nameRef.current.value,
+                address: addressRef.current.value,
+                city: cityRef.current.value,
+                state: stateRef.current.value
+                }
         }
         );
-        setCustomers([...customers, data]);
 
         nameRef.current.value = null;
         addressRef.current.value = null;
@@ -37,11 +42,11 @@ export const AddCustomer = ({customers, setCustomers}) => {
         <Row className="mb-3">
         <Form.Group as={Row} >
           <Form.Label>UserName</Form.Label>
-          <Form.Control type="username" placeholder="Enter UserName" />
+          <Form.Control type="username" ref={usernameRef} required placeholder="Enter UserName" />
         </Form.Group>
         <Form.Group as={Row}>
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" ref={passwordRef} required placeholder="Password" />
         </Form.Group>
         </Row>
         <Row className="mb-3">

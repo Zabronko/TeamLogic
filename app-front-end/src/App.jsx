@@ -18,7 +18,6 @@ function App() {
       mode: "no-cors"
     })
       .then(res => {
-        console.log(res.data);
         setCookie('Authentication', undefined)
         setCookie('Authority', undefined)
       })

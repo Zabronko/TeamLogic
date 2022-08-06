@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.Customer;
 import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.CustomerRepository;
@@ -31,6 +32,9 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerRepository repository;
+	
+	@Autowired
+	private GenericService service;
 	
 	@GetMapping
 	public List<Customer> findAll() {

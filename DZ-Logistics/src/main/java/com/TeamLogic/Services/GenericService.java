@@ -1,26 +1,31 @@
 package com.TeamLogic.Services;
 
+import java.sql.Types;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.TeamLogic.beans.Customer;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
+import com.TeamLogic.beans.User;
 import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.CustomerRepository;
 import com.TeamLogic.repositories.PackageRepository;
 import com.TeamLogic.repositories.StatusRepository;
 import com.TeamLogic.repositories.TruckRepository;
+import com.TeamLogic.repositories.UserRepository;
 import com.TeamLogic.repositories.WarehouseRepository;
 
 @Service
@@ -36,6 +41,13 @@ public class GenericService {
 	private PackageRepository packageRepository;
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 
 	public Warehouse updateAll(Warehouse warehouse) {
@@ -89,6 +101,22 @@ public class GenericService {
 	public int warehouseIdbyPackageId(int packId) {
 		return 0;
 	}
+	
+	
+	// register user
+	public void register(User user) {
+		String hash = passwordEncoder.encode(user.getPassword());
+		String username = user.getUsername();
+		user.setCustomer(customerRepository.save(user.getCustomer()));
+		
+		int userId = user.getCustomer().getId();
+		
+		String userSql = "insert into users values(?, ?, true, ?)";
+		String authSql = "insert into authorities values(?, 'ROLE_USER')";
+		jdbcTemplate.update(userSql, new Object[] { username, hash, userId}, new int[] { Types.VARCHAR, Types.VARCHAR, Types.INTEGER });
+		jdbcTemplate.update(authSql, new String[] { username }, new int[] { Types.VARCHAR });
+		
+	}
 
 
 	public ResponseEntity<?> getCustomerPackagesIfCorrectCustomer(int id) {
@@ -109,4 +137,6 @@ public class GenericService {
 		}
 		
 	}
+
+
 }

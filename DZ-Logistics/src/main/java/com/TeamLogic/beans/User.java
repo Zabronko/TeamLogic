@@ -15,13 +15,17 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
+	//private String password;
+	
+	private boolean enabled;
+	
 	@OneToOne()
 	@JoinColumn(name="customerId")
 	private Customer customer;
 	
 	@Column(name="password")
 	private String password;
-	
+
 	public User() {
 		super();
 	}
@@ -31,6 +35,15 @@ public class User {
 		this.username = username;
 		this.password = password;
 	}
+
+
+	public User(String username, String password, Customer customer) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.customer = customer;
+	}
+
 
 	public String getUsername() {
 		return username;
@@ -56,9 +69,18 @@ public class User {
 		this.password = password;
 	}
 
+
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", customer=" + customer + ", password=" + password + "]";
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	
