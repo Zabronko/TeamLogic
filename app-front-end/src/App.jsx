@@ -69,7 +69,7 @@ function App() {
                 <Nav.Link href="/">Home</Nav.Link>
               </Nav>
               <Nav>
-                <Button href="/logout" variant="outline-secondary">Logout</Button>
+                <Button onClick={() => {logout()}} variant="outline-secondary">Logout</Button>
               </Nav>
             </Container>
           </Navigation>
