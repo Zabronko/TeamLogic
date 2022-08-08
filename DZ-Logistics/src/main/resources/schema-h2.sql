@@ -32,7 +32,7 @@ create table Trucks (
 
 create table Packages (
 	packageId INT AUTO_INCREMENT Primary Key,
-	description VARCHAR(50) not null DEFAULT('none'),
+	description VARCHAR(100) not null DEFAULT('none'),
 	warehouseId INT,
     truckId INT,
     customerId INT,

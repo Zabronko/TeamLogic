@@ -3,6 +3,15 @@ package com.TeamLogic.beans;
 public class LoginInfo {
 	private String Authentication;
 	private String Authority;
+	private Customer customer;
+	
+	public LoginInfo(String authentication, String authority, Customer customer) {
+		super();
+		this.Authentication = authentication;
+		this.Authority = authority;
+		this.customer = customer;
+	}
+	
 	public LoginInfo(String authentication, String authority) {
 		super();
 		Authentication = authentication;
@@ -22,6 +31,12 @@ public class LoginInfo {
 	}
 	public void setAuthority(String authority) {
 		Authority = authority;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 	

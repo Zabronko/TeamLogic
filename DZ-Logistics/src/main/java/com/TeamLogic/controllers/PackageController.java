@@ -52,10 +52,17 @@ public class PackageController {
 		return service.savePackage(pack);
 	}
 	
+
 	@GetMapping("/packageId={id}")
 	public int getWarehouseByPackageId(@PathVariable int id) {
 		Package pack = repository.getReferenceById(id);
 		return pack.getWarehouse().getId();
+	}
+
+	@PostMapping("/newM")
+	public List<Package> save(@RequestBody List<Package> packages) {
+		return service.savePackages(packages);
+
 	}
 
 }

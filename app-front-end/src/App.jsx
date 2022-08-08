@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList, SignupPage, SigninPage, CustomerPortalPackages } from "./pages"
+import { Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList, SignupPage, SigninPage, CustomerPortalPackages, CustomerOrderPage } from "./pages"
 import { Nav, Navbar, Button, Container } from 'react-bootstrap';
 import { Navigation } from './components/Navigation';
 import { useCookies } from "react-cookie";
@@ -71,6 +71,7 @@ function App() {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href='/Profile'>My Profile</Nav.Link>
                 <Nav.Link href='/CustomerPackages'>My Packages</Nav.Link>
+                <Nav.Link href='/CustomerOrder'>Order</Nav.Link>
               </Nav>
               <Nav>
                 <Button onClick={() => {logout()}} href="/" variant="outline-secondary">Logout</Button>
@@ -81,6 +82,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/CustomerPackages" element={<CustomerPortalPackages />} />
+            <Route path="/CustomerOrder" element={<CustomerOrderPage />} />
             <Route path="/*" element={<Home />}></Route>
           </Routes>
         </BrowserRouter>
