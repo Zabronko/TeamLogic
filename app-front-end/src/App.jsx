@@ -69,6 +69,7 @@ function App() {
             <Container fluid>
               <Nav as="h3" variant="tabs" >
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href='/Profile'>My Profile</Nav.Link>
                 <Nav.Link href='/CustomerPackages'>My Packages</Nav.Link>
               </Nav>
               <Nav>

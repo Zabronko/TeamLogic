@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 export const PackageMasterList = () => {
     const [packs, setPacks] = useState([]);
+    const navigate = useNavigate();
 
-
-    const handleClick = async () => {
-        // get warehouse id and route 
-        //axios.get('http://localhost:8080/packages')
-        //.then(res => setPacks(res.data));
+    const handleClick = async (pack) => {
+        axios.get(`http://localhost:8080/packages/packageId=${pack.id}`)
+        .then(res => navigate(`/warehouses/${res.data}`));
 
     }
 
@@ -39,7 +38,7 @@ export const PackageMasterList = () => {
                 <tbody>
                     {packs.map((pack) => {
                         return (
-                            <tr onClick={handleClick} key={pack.id}>
+                            <tr onClick={() => handleClick(pack)} key={pack.id}>
                                 <td >{pack.id}</td>
                                 <td>{pack.description}</td>
                                 <td>{pack.customer.name}</td>

@@ -96,12 +96,6 @@ public class GenericService {
         	return 0;
         }
     }
-
-
-	// work in progress DL
-	public int warehouseIdbyPackageId(int packId) {
-		return 0;
-	}
 	
 	
 	// register user
