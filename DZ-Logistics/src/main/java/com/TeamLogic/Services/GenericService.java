@@ -57,12 +57,20 @@ public class GenericService {
 		return warehouseRepository.save(warehouse);
 	}
 
-
 	public Package savePackage(Package pack) {
 		Random r = new Random();
 		int warehouseId = r.nextInt(9-1)+1;
 		pack.setWarehouse(warehouseRepository.findById(warehouseId).get());
 		return packageRepository.save(pack);
+	}
+
+	public List<Package> savePackages(List<Package> packages) {
+		Random r = new Random();
+		for(Package p:packages) {
+			int warehouseId = r.nextInt(9-1)+1;
+			p.setWarehouse(warehouseRepository.findById(warehouseId).get());
+		}
+		return packageRepository.saveAll(packages);
 	}
 
 
@@ -79,6 +87,23 @@ public class GenericService {
 		return truckRepository.save(truck);
 	}
 
+	
+	public Customer getCutomerIdByUsername(String username) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        String userName = null;
+        if (authentication != null) {
+
+                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+                userName = userDetails.getUsername();
+
+        }
+        if(!userName.equals(null)) {
+        	return customerRepository.findByUsername(userName);
+        }else {
+        	return null;
+        }
+    }
 	
 	public int getCutomerIdByUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();

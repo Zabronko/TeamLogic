@@ -1,5 +1,6 @@
 package com.TeamLogic.controllers;
 
+import java.awt.geom.GeneralPath;
 import java.time.Instant;
 import java.util.Date;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 
+import com.TeamLogic.Services.GenericService;
 import com.TeamLogic.beans.LoginInfo;
 import com.TeamLogic.beans.User;
 import com.TeamLogic.repositories.UserRepository;
@@ -38,6 +40,9 @@ public class LoginController {
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	GenericService service;
 	
 	
 	@PostMapping("/login")
@@ -60,7 +65,10 @@ public class LoginController {
 //					  .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L)))
 //					  .compact();
 			System.out.println(RequestContextHolder.getRequestAttributes().getSessionId());
-			return ResponseEntity.ok(new LoginInfo(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));//.header(org.springframework.http.HttpHeaders.AUTHORIZATION).body(jws);
+			if(auth.getAuthorities().toArray()[0].toString().equals("ROLE_USER"))
+				return ResponseEntity.ok(new LoginInfo(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString(), service.getCutomerIdByUsername(user.getUsername())));//.header(org.springframework.http.HttpHeaders.AUTHORIZATION).body(jws);
+			else
+				return ResponseEntity.ok(new LoginInfo(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));
 		}catch (BadCredentialsException e) {
 			throw new Exception("Invalid Credentials");
 		}

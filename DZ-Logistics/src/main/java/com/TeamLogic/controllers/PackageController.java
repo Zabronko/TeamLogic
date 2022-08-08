@@ -51,5 +51,10 @@ public class PackageController {
 	public Package save(@RequestBody Package pack) {
 		return service.savePackage(pack);
 	}
+	
+	@PostMapping("/newM")
+	public List<Package> save(@RequestBody List<Package> packages) {
+		return service.savePackages(packages);
+	}
 
 }

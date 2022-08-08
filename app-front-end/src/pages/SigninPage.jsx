@@ -19,6 +19,7 @@ export const SigninPage = () => {
         const res = await axios.post("http://localhost:8080/login", user)
         setCookie('username', user.username)
         setCookie('Authority', res.data.authority)
+        setCookie('Customer', res.data.customer)
       }
     
 
