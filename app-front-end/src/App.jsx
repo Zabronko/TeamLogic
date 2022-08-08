@@ -7,7 +7,7 @@ import axios from 'axios';
 import {useEffect} from 'react';
 
 function App() {
-  const [cookies, setCookie] = useCookies('Authority');
+  const [cookies, setCookie, removeCookie] = useCookies('Authority');
   axios.defaults.crossDomain = true
   axios.defaults.withCredentials = true
 
@@ -16,7 +16,11 @@ function App() {
       mode: "no-cors"
     })
       .then(res => {
-        setCookie('Authority', undefined)
+        removeCookie("Authority")
+        removeCookie("Authentication")
+        setCookie("JSESSIONID",undefined)
+        removeCookie("Customer")
+        removeCookie("username")
       })
   }
 
@@ -26,6 +30,7 @@ function App() {
     }
   },[])
 
+  console.log(cookies["Authority"])
   if (cookies["Authority"] === "ROLE_ADMIN") {
     return (
       <>
@@ -88,7 +93,7 @@ function App() {
         </BrowserRouter>
       </>
     );
-  } else if (cookies["Authority"] === 'undefined') {
+  } else if (cookies["Authority"] === undefined) {
     return (
       <>
         <BrowserRouter>
