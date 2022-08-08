@@ -1,6 +1,7 @@
 package com.TeamLogic.Services;
 
 import java.sql.Types;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,6 +137,11 @@ public class GenericService {
 			return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
 		}
 		
+	}
+	
+	public List<Package> getCustomerPackagesWithUsername(String username) {
+		Customer customerCheck = customerRepository.findByUsername(username);
+		return packageRepository.findByCustomerId(customerCheck.getId());
 	}
 
 

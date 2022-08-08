@@ -49,16 +49,16 @@ public class LoginController {
 			SecurityContextHolder.getContext().setAuthentication(auth);
 			user.setPassword(null);
 			
-			String jws = Jwts.builder()
-					  .setIssuer("TeamLogic")
-					  .setSubject("Authorization")
-					  .claim("name", user.getUsername())
-					  .claim("scope", auth.getAuthorities())
-					  // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
-					  .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))
-					  // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
-					  .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L)))
-					  .compact();
+//			String jws = Jwts.builder()
+//					  .setIssuer("TeamLogic")
+//					  .setSubject("Authorization")
+//					  .claim("name", user.getUsername())
+//					  .claim("scope", auth.getAuthorities())          ////// Not needed (look up jws token for more info)
+//					  // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
+//					  .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))
+//					  // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
+//					  .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L)))
+//					  .compact();
 			System.out.println(RequestContextHolder.getRequestAttributes().getSessionId());
 			return ResponseEntity.ok(new LoginInfo(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));//.header(org.springframework.http.HttpHeaders.AUTHORIZATION).body(jws);
 		}catch (BadCredentialsException e) {

@@ -1,17 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList, SignupPage, SigninPage } from "./pages"
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { Customers, CustomerInfo, Warehouses, WarehouseInfo, Home, PackageMasterList, TruckMasterList, SignupPage, SigninPage, CustomerPortalPackages } from "./pages"
 import { Nav, Navbar, Button, Container } from 'react-bootstrap';
 import { Navigation } from './components/Navigation';
 import { useCookies } from "react-cookie";
 import axios from 'axios';
+import {useEffect} from 'react';
 
 function App() {
   const [cookies, setCookie] = useCookies('Authority');
   axios.defaults.crossDomain = true
   axios.defaults.withCredentials = true
 
-  const logout = () => {
-    fetch("http://localhost:8080/logout", {
+  const logout = async() => {
+    await fetch("http://localhost:8080/logout", {
       mode: "no-cors"
     })
       .then(res => {
@@ -19,7 +20,12 @@ function App() {
       })
   }
 
-  console.log(cookies);
+  useEffect(() => {
+    if(window.location.href.includes('/signin') & cookies['Authority'] !== 'undefined') {
+      window.location.href = "http://localhost:3000"
+    }
+  },[])
+
   if (cookies["Authority"] === "ROLE_ADMIN") {
     return (
       <>
@@ -35,7 +41,7 @@ function App() {
                 <Nav.Link href="/trucks">Trucks</Nav.Link>
               </Nav>
               <Nav>
-                <Button onClick={() => { logout() }} variant="outline-secondary">Logout</Button>
+                <Button onClick={() => { logout() }} href="/" variant="outline-secondary">Logout</Button>
               </Nav>
             </Container>
           </Navigation>
@@ -63,15 +69,17 @@ function App() {
             <Container fluid>
               <Nav as="h3" variant="tabs" >
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href='/CustomerPackages'>My Packages</Nav.Link>
               </Nav>
               <Nav>
-                <Button onClick={() => {logout()}} variant="outline-secondary">Logout</Button>
+                <Button onClick={() => {logout()}} href="/" variant="outline-secondary">Logout</Button>
               </Nav>
             </Container>
           </Navigation>
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/CustomerPackages" element={<CustomerPortalPackages />} />
             <Route path="/*" element={<Home />}></Route>
           </Routes>
         </BrowserRouter>
@@ -97,7 +105,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignupPage />}></Route>
-            <Route path="/signin" element={<SigninPage />}></Route>
+            <Route path="/signin" element={<SigninPage/>}></Route>
             <Route path="/*" element={<Home />}></Route>
           </Routes>
         </BrowserRouter>

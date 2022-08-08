@@ -7,3 +7,4 @@ export * from "./PackageMasterList";
 export * from "./TruckMasterList";
 export * from "./SignupPage"
 export * from "./SigninPage"
+export * from "./CustomerPortalPackages"
