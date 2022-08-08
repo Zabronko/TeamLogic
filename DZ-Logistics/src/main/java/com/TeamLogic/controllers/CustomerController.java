@@ -20,46 +20,50 @@ import com.TeamLogic.beans.Customer;
 import com.TeamLogic.beans.Package;
 import com.TeamLogic.repositories.CustomerRepository;
 
-
 @RestController
 @RequestMapping("/customers")
 @CrossOrigin(origins = "*")
 public class CustomerController {
-	
+
 	@Autowired
 	private CustomerRepository repository;
-	
+
 	@Autowired
 	private GenericService service;
-	
+
 	@GetMapping
 	public List<Customer> findAll() {
 		return repository.findAll();
 	}
-	
+
 	@PostMapping
 	public Customer save(@RequestBody Customer customer) {
 		return repository.save(customer);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findById(@PathVariable int id) {
 		return service.findCustomerIdAuthorized(id);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
 		repository.deleteById(id);
 	}
-	
+
 	@PutMapping("/{id}")
 	public Customer update(@RequestBody Customer customer) {
 		return repository.save(customer);
 	}
-	
+
 	@GetMapping("/packages")
 	public List<Package> getPackagesAndInfo(@RequestParam String username) {
 		return service.getCustomerPackagesWithUsername(username);
+	}
+
+	@GetMapping("/?username={username}")
+	public Customer getByUsername(@PathVariable String username) {
+		return repository.findByUsername(username);
 	}
 
 }
