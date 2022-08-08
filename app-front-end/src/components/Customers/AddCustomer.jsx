@@ -1,12 +1,13 @@
-import { useRef} from "react";
+import { useRef, useState} from "react";
 import axios from "axios"; 
-
 import {Form, Button, Row, Col} from 'react-bootstrap';
+import { RegisterCustomerModal } from "./RegisterCustomerModal";
+
 
 
 
 export const AddCustomer = () => {
-    
+    const [modalShow, setModalShow] = useState(false);
 
     const nameRef = useRef();
     const addressRef = useRef();
@@ -37,12 +38,14 @@ export const AddCustomer = () => {
         addressRef.current.value = null;
         cityRef.current.value = null;
         stateRef.current.value = null;
+        setModalShow(true)
         } catch(err) {
             console.error(err);
         }
     }
 
   return (
+    <>
     <Form onSubmit={handleSubmit}>
         <Row className="mb-3">
         <Form.Group as={Row} >
@@ -84,5 +87,10 @@ export const AddCustomer = () => {
         <Button variant="success" type="submit" > Sign Up </Button>
     </Row>
     </Form>
+            <RegisterCustomerModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+    </>
   )
 }
