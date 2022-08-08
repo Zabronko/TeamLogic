@@ -47,8 +47,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Customer> findById(@PathVariable int id) {
-		return repository.findById(id);
+	public ResponseEntity<?> findById(@PathVariable int id) {
+		return service.findCustomerIdAuthorized(id);
 	}
 	
 	@DeleteMapping("/{id}")

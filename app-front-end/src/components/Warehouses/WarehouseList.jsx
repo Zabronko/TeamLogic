@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import { Table, Card} from 'react-bootstrap'
 import { Warehouse } from './Warehouse'
 import axios from 'axios'
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
 export const WarehouseList = () => {
 
     const [warehouses, setWarehouses] = useState([]);
-    const [cookies, setCookie] = useCookies('Authentication')
-    const history = useNavigate();
 
     useEffect(() => {
         getData();
@@ -21,9 +17,7 @@ export const WarehouseList = () => {
                 "Content-Type":'application/x-www-form-urlencoded'
             }
         });
-        console.log(res.data);
         setWarehouses(res.data);
-        console.log(res.status)
     }
 
     return (

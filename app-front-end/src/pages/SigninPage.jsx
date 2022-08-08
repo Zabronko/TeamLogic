@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Button, Card, Form, Row } from "react-bootstrap";
-import { useEffect, useRef, useState } from "react";
+import { useRef} from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export const SigninPage = () => {
     const passwordRef = useRef('');
     const history = useNavigate();
 
-    const [cookies, setCookie] = useCookies('Authentication')
+    const [cookies, setCookie] = useCookies('Authority')
 
 
     const login = async () => {
@@ -20,10 +20,8 @@ export const SigninPage = () => {
         };
         axios.post("http://localhost:8080/login", user)
         .then(res => {
-            console.log(res.data);
-            setCookie('Authentication', res.data.authentication)
             setCookie('Authority', res.data.authority)
-        })
+        }).finally(history('/'))
       }
 
     return (

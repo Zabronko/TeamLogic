@@ -4,21 +4,17 @@ import { Nav, Navbar, Button, Container } from 'react-bootstrap';
 import { Navigation } from './components/Navigation';
 import { useCookies } from "react-cookie";
 import axios from 'axios';
-import { useState } from "react"
 
 function App() {
-  const [cookies, setCookie] = useCookies('Authorization, Authority');
+  const [cookies, setCookie] = useCookies('Authority');
   axios.defaults.crossDomain = true
   axios.defaults.withCredentials = true
-  axios.defaults.headers.common["Authorization"] = cookies["Authorization"]
-  //axios.defaults.headers.common["Content-Type"] = 'application/x-www-form-urlencoded';
 
   const logout = () => {
     fetch("http://localhost:8080/logout", {
       mode: "no-cors"
     })
       .then(res => {
-        setCookie('Authentication', undefined)
         setCookie('Authority', undefined)
       })
   }

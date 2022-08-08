@@ -139,4 +139,24 @@ public class GenericService {
 	}
 
 
+	public ResponseEntity<?> findCustomerIdAuthorized(int id) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentUserName ="";
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    currentUserName = authentication.getName();
+		}
+		Customer customerCheck = customerRepository.findByUsername(currentUserName);
+		if(authentication.getAuthorities().toArray()[0].equals(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+			return new ResponseEntity<>(customerRepository.findById(id).get(), HttpStatus.OK);
+		}
+		if(customerCheck.getId() == id) {
+			return new ResponseEntity<>(customerRepository.findById(id).get(), HttpStatus.OK);
+			
+		}else {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+		
+	}
+
+
 }
