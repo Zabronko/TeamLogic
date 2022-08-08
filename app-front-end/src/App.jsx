@@ -63,6 +63,7 @@ function App() {
             <Container fluid>
               <Nav as="h3" variant="tabs" >
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/customers/1">Profile</Nav.Link>
               </Nav>
               <Nav>
                 <Button onClick={() => {logout()}} variant="outline-secondary">Logout</Button>
@@ -72,7 +73,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/*" element={<Home />}></Route>
+            <Route path="/*" element={<CustomerInfo />}></Route>
           </Routes>
         </BrowserRouter>
       </>

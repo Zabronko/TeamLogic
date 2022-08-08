@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
-import Card from "react-bootstrap/Card";
 import { CustomerPackage } from "../components/Customers/CustomerPackage";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { CreatePackage } from "../components/Packages/CreatePackage";
-
+import { useCookies } from "react-cookie";
 import { EditCustomer } from "../components/Customers/EditCustomer";
 
 
 export const CustomerInfo = () => {
+  
+  const [cookies, setCookie] = useCookies('Authority')
+  const userBool = cookies["Authority"] === "ROLE_USER";
+
   const location = useLocation();
   const cust = location.state.id;
   const [customer, setCustomer] = useState([]);
@@ -44,12 +47,12 @@ export const CustomerInfo = () => {
      <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>
      }
 
-    {!renderEditCustomer &&
+    {!renderEditCustomer && userBool &&
      <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>Edit Profile</Button></div>
      }
     </Card>
-    <div style={{width: "80%", alignContent:"center", marginLeft:"10%"}}><Button onClick={() => setRenderAddPackage(!renderAddPackage)}>Request Package</Button></div>
-    {renderAddPackage && 
+    { userBool && <div style={{width: "80%", alignContent:"center", marginLeft:"10%"}}><Button onClick={() => setRenderAddPackage(!renderAddPackage)}>Request Package</Button></div>}
+    {renderAddPackage &&
     <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>
     }
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>

@@ -8,7 +8,7 @@ export const SignupPage = () => {
 
 
   return (
-    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
+    <Card style={{ width: "30%", marginLeft: "35%", justifyContent: "center" }}>
     <Card.Body >
       <AddCustomer />
     </Card.Body>

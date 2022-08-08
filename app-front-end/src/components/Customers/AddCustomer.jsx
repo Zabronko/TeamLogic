@@ -4,7 +4,10 @@ import axios from "axios";
 import {Form, Button, Row, Col} from 'react-bootstrap';
 
 
+
 export const AddCustomer = () => {
+    
+
     const nameRef = useRef();
     const addressRef = useRef();
     const cityRef = useRef();
@@ -28,6 +31,8 @@ export const AddCustomer = () => {
         }
         );
 
+        usernameRef.current.value = null;
+        passwordRef.current.value = null;
         nameRef.current.value = null;
         addressRef.current.value = null;
         cityRef.current.value = null;
