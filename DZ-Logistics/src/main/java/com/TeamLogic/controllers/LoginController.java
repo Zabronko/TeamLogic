@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -48,7 +49,6 @@ public class LoginController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody User user) throws Exception {
 		Authentication auth;
-		System.out.println(user);
 		try {
 			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
 			SecurityContextHolder.getContext().setAuthentication(auth);
@@ -70,7 +70,7 @@ public class LoginController {
 			else
 				return ResponseEntity.ok(new LoginInfo(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));
 		}catch (BadCredentialsException e) {
-			throw new Exception("Invalid Credentials");
+			return new ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
