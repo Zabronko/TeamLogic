@@ -24,7 +24,9 @@ export const PackageMasterList = () => {
 
 
     return (
-        <Card style={{ width: "80%", alignContent: "center", marginLeft: "10%" }}>
+        <Card style={{ width: "60%", alignContent: "center", marginLeft: "20%" }}>
+            <h1 style={{ textAlign: "center" }}>Packages</h1>
+            <Card.Body>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -50,6 +52,7 @@ export const PackageMasterList = () => {
                 </tbody>
 
             </Table>
+            </Card.Body>
         </Card>
     )
 }
