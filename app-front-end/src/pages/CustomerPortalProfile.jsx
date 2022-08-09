@@ -7,9 +7,7 @@ export const CustomerPortalProfile = () => {
 
     const [customer, setCustomer] = useState([]);
     const [renderEditCustomer, setRenderEditCustomer] = useState(false);
-   
 
-  
     useEffect(() => {
         axios.get(`http://localhost:8080/customers/profile`)
         .then(res => setCustomer(res.data))
@@ -18,13 +16,14 @@ export const CustomerPortalProfile = () => {
   return (
     <>
     <h1 style={{ textAlign: "center" }}>Customer Profile</h1>
-    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
+    <Card style={{width: "60%", alignContent:"center", marginLeft:"20%"}}>
     {!renderEditCustomer && <> 
     <Card.Header >Information</Card.Header>
-    <div>Name: {customer.name}</div>
-    <div>Address: {customer.address}</div>
-    <div>City: {customer.city}</div>
-    <div>State: {customer.state}</div>
+    <Card.Body style={{ textAlign: "center" }}>
+    <div>{customer.name}</div>
+    <div>{customer.address}</div>
+    <div>{customer.city}, {customer.state}</div>
+    </Card.Body>
     </>}
     {renderEditCustomer &&
      <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>
