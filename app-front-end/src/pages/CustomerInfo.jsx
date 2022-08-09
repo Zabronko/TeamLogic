@@ -25,7 +25,7 @@ export const CustomerInfo = () => {
     axios.get(`http://localhost:8080/packages/customer${cust.id}`)
     .then(res => setPackages(res.data))
     .then(getData)
-  },[cust.id, getData]);
+  },[cust.id]);
 
   
   return (
