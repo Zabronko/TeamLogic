@@ -17,7 +17,6 @@ function App() {
     })
       .then(res => {
         removeCookie("Authority")
-        removeCookie("Authentication")
         setCookie("JSESSIONID",undefined)
         removeCookie("Customer")
         removeCookie("username")
@@ -30,7 +29,6 @@ function App() {
     }
   },[])
 
-  console.log(cookies["Authority"])
   if (cookies["Authority"] === "ROLE_ADMIN") {
     return (
       <>
