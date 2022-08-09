@@ -1,16 +1,22 @@
-import Card from "react-bootstrap/Card";
-import CardHeader from "react-bootstrap/esm/CardHeader";
+
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 export const CustomerPackage = ({pack}) => {
-  return (
-    <Card>
-      <CardHeader>package id  {pack.id}</CardHeader>
-      <Card.Body>
-      <div>Description: {pack.description} </div>
-      <div>Status: {pack.status.status} </div>
-      </Card.Body>
+  const navigate = useNavigate();
+  
+  const handleClick = async (pack) => {
+    axios.get(`http://localhost:8080/packages/packageId=${pack.id}`)
+    .then(res => navigate(`/warehouses/${res.data}`));
 
-    </Card>
+}
+
+  return (
+    <tr onClick={() => handleClick(pack)} key={pack.id}>
+    <td >{pack.id}</td>
+    <td>{pack.description}</td>
+    <td>{pack.status.status}</td>
+  </tr>
   )
 }

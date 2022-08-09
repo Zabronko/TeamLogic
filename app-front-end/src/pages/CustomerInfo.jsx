@@ -2,22 +2,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
 import { CustomerPackage } from "../components/Customers/CustomerPackage";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Table, Container } from "react-bootstrap";
 import { CreatePackage } from "../components/Packages/CreatePackage";
 import { useCookies } from "react-cookie";
 import { EditCustomer } from "../components/Customers/EditCustomer";
 
 
 export const CustomerInfo = () => {
-  
-  const [cookies, setCookie] = useCookies('Authority')
-  const userBool = cookies["Authority"] === "ROLE_USER";
 
   const location = useLocation();
   const cust = location.state.id;
   const [customer, setCustomer] = useState([]);
   const [packages, setPackages] = useState([]);
-  const [renderAddPackage, setRenderAddPackage] = useState(false);
+
   const [renderEditCustomer, setRenderEditCustomer] = useState(false);
  
   const getData = async() => {
@@ -34,32 +31,46 @@ export const CustomerInfo = () => {
   
   return (
     <>
-    <h1 style={{ textAlign: "center" }}>Customer Profile</h1>
-    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
+    <h1 style={{ textAlign: "center" }}>Customer Information</h1>
+    <Card style={{width: "50%", alignContent:"center", marginLeft:"25%", marginBottom:"1%"}}>
     {!renderEditCustomer && <> 
-    <Card.Header >Information</Card.Header>
-    <div>Name: {customer.name}</div>
-    <div>Address: {customer.address}</div>
-    <div>City: {customer.city}</div>
-    <div>State: {customer.state}</div>
+    <Card.Header style={{textAlign: "center"}}>Customer</Card.Header>
+    <Card.Body style={{ textAlign: "center" }}>
+    <div>{customer.name}</div>
+    <div>{customer.address}</div>
+    <div>{customer.city}, {customer.state}</div>
+    </Card.Body>
     </>}
     {renderEditCustomer &&
      <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>
      }
 
-    {!renderEditCustomer && userBool &&
-     <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>Edit Profile</Button></div>
-     }
     </Card>
-    { userBool && <div style={{width: "80%", alignContent:"center", marginLeft:"10%"}}><Button onClick={() => setRenderAddPackage(!renderAddPackage)}>Request Package</Button></div>}
-    {renderAddPackage &&
-    <CreatePackage customerId={customer.id} packages={packages} setPackages={setPackages}/>
-    }
-    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
-    {packages.map((pack) => {
-                        return <CustomerPackage key={pack.id} pack={pack}/>
-                    })}
+
+
+    <Card style={{ width: "50%", alignContent: "center", marginLeft: "25%" }}>
+      <Card.Header style={{textAlign: "center"}}>Customer Packages</Card.Header>
+    <Table striped bordered hover >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {packages.map((pack) => {
+                return (
+                  <CustomerPackage key={pack.id} pack={pack}/>
+
+                );
+            })}
+        </tbody>
+
+    </Table>
     </Card>
+    
     </>
   )
 }
