@@ -25,7 +25,7 @@ function App() {
   }
 
   useEffect(() => {
-    if(window.location.href.includes('/signin') & cookies['Authority'] !== 'undefined') {
+    if(window.location.href.includes('/signin') & cookies['Authority'] !== undefined) {
       window.location.href = "http://localhost:3000"
     }
   },[])
