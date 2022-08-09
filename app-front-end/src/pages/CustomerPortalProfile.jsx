@@ -25,12 +25,13 @@ export const CustomerPortalProfile = () => {
     <div>{customer.city}, {customer.state}</div>
     </Card.Body>
     </>}
-    {renderEditCustomer &&
+    {renderEditCustomer &&    
      <EditCustomer customer={customer} setCustomer={setCustomer} renderEditCustomer={renderEditCustomer} setRenderEditCustomer={setRenderEditCustomer}/>
      }
 
     {!renderEditCustomer &&
      <div><Button onClick={() => setRenderEditCustomer(!renderEditCustomer)}>Edit Profile</Button></div>
+     
      }
     </Card>
 

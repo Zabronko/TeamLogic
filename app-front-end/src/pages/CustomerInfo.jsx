@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
 import { CustomerPackage } from "../components/Customers/CustomerPackage";
-import { Button, Card, Table, Container } from "react-bootstrap";
-import { CreatePackage } from "../components/Packages/CreatePackage";
-import { useCookies } from "react-cookie";
+import { Card, Table} from "react-bootstrap";
+
 import { EditCustomer } from "../components/Customers/EditCustomer";
 
 
@@ -26,7 +25,7 @@ export const CustomerInfo = () => {
     axios.get(`http://localhost:8080/packages/customer${cust.id}`)
     .then(res => setPackages(res.data))
     .then(getData)
-  },[cust.id]);
+  },[cust.id, getData]);
 
   
   return (

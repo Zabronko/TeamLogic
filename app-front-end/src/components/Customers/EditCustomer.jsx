@@ -1,7 +1,7 @@
 import {useRef} from 'react'
 import Form from "react-bootstrap/Form";
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 export const EditCustomer = ({customer, setCustomer,renderEditCustomer, setRenderEditCustomer}) => {
     const nameRef = useRef();
@@ -31,6 +31,9 @@ export const EditCustomer = ({customer, setCustomer,renderEditCustomer, setRende
 
 
   return (
+    <>
+    <Card.Header>Edit Profile</Card.Header>
+    <Card.Body>
     <Form onSubmit={handleSubmit}>
     <Form.Group>
     <Form.Label>Name</Form.Label>
@@ -57,8 +60,13 @@ export const EditCustomer = ({customer, setCustomer,renderEditCustomer, setRende
       <Button variant="success" type="submit" >
         Update Customer
         </Button>
+        <Button variant="danger" onClick={() => setRenderEditCustomer(!renderEditCustomer)}  >
+        Cancel Update
+        </Button>
     </Form.Group>
     
   </Form>
+  </Card.Body>
+  </>
   )
 }
