@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card } from "react-bootstrap";
 import { EditCustomer } from "../components/Customers/EditCustomer";
+import { useCookies } from "react-cookie";
 
 export const CustomerPortalProfile = () => {
 
     const [customer, setCustomer] = useState([]);
     const [renderEditCustomer, setRenderEditCustomer] = useState(false);
-
+    const [cookies,setCookie] = useCookies();
+    
     useEffect(() => {
-        axios.get(`http://localhost:8080/customers/profile`)
+        axios.get(`http://localhost:8080/customers/${cookies['Customer'].id}`)
         .then(res => setCustomer(res.data))
     },[]);
 
