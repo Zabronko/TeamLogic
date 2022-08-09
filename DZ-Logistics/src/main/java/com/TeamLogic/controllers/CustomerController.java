@@ -61,9 +61,10 @@ public class CustomerController {
 		return service.getCustomerPackagesWithUsername(username);
 	}
 
-	@GetMapping("/?username={username}")
-	public Customer getByUsername(@PathVariable String username) {
-		return repository.findByUsername(username);
+	@GetMapping("/profile")
+	public Customer getByUsername() {
+		int id = service.getCutomerIdByUsername();
+		return repository.getReferenceById(id);
 	}
 
 }
