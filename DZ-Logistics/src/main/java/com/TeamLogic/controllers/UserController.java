@@ -1,5 +1,7 @@
 package com.TeamLogic.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,34 +27,47 @@ public class UserController {
 	private GenericService service;
 	
 	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
 	private TruckRepository truckRepository;
 	
 	@Autowired
 	private StatusRepository statusRepository;
 
+	@Autowired
+	private UserRepository repo;
+	
 	@PostMapping("/signup")
 	public ResponseEntity<Void> save(@RequestBody User user) {
 		service.register(user);
 		return ResponseEntity.noContent().build();
 	}
 	
+
 	@PostMapping("/Driver/truck/{id}")
 	public ResponseEntity<?> DriverSaveTruck(@PathVariable int id, @RequestParam String username) {
-		User user = userRepository.findById(username).get();
+		User user = repo.findById(username).get();
 		Truck truck = truckRepository.findById(id).get();
 		truck.setStatus(statusRepository.findById(2).get());
 		user.setTruck(truck);
-		userRepository.save(user);
+		repo.save(user);
 		user.setPassword(null);
 		return ResponseEntity.ok(user);
 	}
 	
 	@GetMapping("/Driver/{username}")
 	public Truck findTruck(@PathVariable String username) {
-		User user = userRepository.findById(username).get();
+		User user = repo.findById(username).get();
 		return user.getTruck();
 	}
+
+	@PostMapping("/apply")
+	public ResponseEntity<Void> apply(@RequestBody User user) {
+		service.applyDriver(user);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/use")
+	public List<User> getAll(){
+		return repo.findAll();
+	}
+
 }

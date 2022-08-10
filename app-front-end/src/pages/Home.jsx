@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Card from "react-bootstrap/Card"
 import { useCookies } from "react-cookie";
 
+
 export const Home = () => {
 
   return (
