@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Button, Card, Form, Row } from "react-bootstrap";
 import { useRef, useState} from "react";
-import { Cookies, useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export const SigninPage = () => {
 
@@ -10,7 +9,6 @@ export const SigninPage = () => {
     const passwordRef = useRef('');
 
     const [,setCookie] = useCookies('Customer')
-    const history = useNavigate();
     const [errorMsg, setErrorMsg] = useState('');
 
     const login = async () => {
@@ -26,7 +24,7 @@ export const SigninPage = () => {
             window.location.href = "http://localhost:3000"
         }).catch(e => {
             setErrorMsg('Invalid Login Credidentials')
-        }); 
+        })
       }
     
 

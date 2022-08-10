@@ -1,4 +1,4 @@
-import { WarehouseList } from "../components/Warehouses/WarehouseList"
+import { WarehouseList } from "../../components/Warehouses/WarehouseList"
 
 export const Warehouses = () => {
   return (

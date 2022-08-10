@@ -32,11 +32,12 @@ create table Trucks (
 
 create table Packages (
 	packageId INT AUTO_INCREMENT Primary Key,
-	description VARCHAR(100) not null DEFAULT('none'),
+	description VarChar(100) not null Default('none'),
 	warehouseId INT,
     truckId INT,
     customerId INT,
     statusId INT not null DEFAULT(1),
+    LastCheckIn VarChar(200),
     
     foreign key (warehouseId) references Warehouses(warehouseId),
     foreign key (truckId) references Trucks(truckId),
@@ -49,6 +50,7 @@ create table Users (
 	password VARCHAR(100) not null,
 	enabled boolean not null,
 	customerId INT,
+	truckId INT,
 	
 	foreign key (customerId) references Customers(customerId)
 );

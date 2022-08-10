@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TeamLogic.Services.GenericService;
-import com.TeamLogic.beans.Package;
 import com.TeamLogic.beans.Truck;
-import com.TeamLogic.beans.Warehouse;
 import com.TeamLogic.repositories.TruckRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 

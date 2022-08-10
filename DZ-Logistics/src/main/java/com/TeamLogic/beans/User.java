@@ -1,5 +1,6 @@
 package com.TeamLogic.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,17 +16,21 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
-	//private String password;
-	
 	private boolean enabled;
 	
+	//null if Admin or Driver
 	@OneToOne()
 	@JoinColumn(name="customerId")
 	private Customer customer;
 	
 	@Column(name="password")
 	private String password;
-
+	
+	// only assigned if the user has the driver role
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="truckId")
+	private Truck truck;
+	
 	public User() {
 		super();
 	}
@@ -68,7 +73,15 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
+	public Truck getTruck() {
+		return truck;
+	}
+
+	public void setTruck(Truck truck) {
+		this.truck = truck;
+	}
 
 	@Override
 	public String toString() {

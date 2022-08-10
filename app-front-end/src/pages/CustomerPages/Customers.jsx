@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import { CustomerComponent } from '../components/Customers/CustomerComponent';
+import { CustomerComponent } from '../../components/Customers/CustomerComponent';
 import { useState, useEffect } from "react";
 import axios from "axios";
 

@@ -88,7 +88,9 @@ insert into Packages (warehouseId, customerId) values (2, 20);
 -- users
 insert into Users(username,password,enabled) values('employee','$2a$04$dGNVCgMxXW4WssgC3W1sy.n9fAJAe2DKfQWKcsfNZgeuF0KJKZ7kq', true);
 insert into Users(username,password,enabled,customerId) values('EddyW','$2a$04$hTNib9WfCjpZkWrUE8X0ceBlwyNen.C1MUtS0iowTozo3M1uLtZ06',true,1);
+insert into Users(username,password,enabled) values('Dan','$2a$04$yTlvhLvN/bB3FeG3LF1LKOd38.lPsXOux8yD7tedJ.S9mQF2Nh4sC',true);
 
 -- authorities
 insert into authorities values('employee', 'ROLE_ADMIN');
 insert into authorities values('EddyW', 'ROLE_USER');
+insert into authorities values('Dan', 'ROLE_DRIVER');

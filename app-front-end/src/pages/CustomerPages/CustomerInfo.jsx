@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
-import { CustomerPackage } from "../components/Customers/CustomerPackage";
+import { CustomerPackage } from "../../components/Customers/CustomerPackage";
 import { Card, Table} from "react-bootstrap";
 
-import { EditCustomer } from "../components/Customers/EditCustomer";
+import { EditCustomer } from "../../components/Customers/EditCustomer";
 
 
 export const CustomerInfo = () => {
