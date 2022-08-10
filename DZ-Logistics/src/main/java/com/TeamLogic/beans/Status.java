@@ -14,7 +14,7 @@ public class Status {
 	@Id
 	@Column(name="statusId")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 	
 	@Column(name="status")
 	private String status;
@@ -29,11 +29,11 @@ public class Status {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getStatus() {
@@ -46,7 +46,7 @@ public class Status {
 
 	@Override
 	public String toString() {
-		return "Status [Id=" + Id + ", status=" + status + "]";
+		return "Status [Id=" + id + ", status=" + status + "]";
 	}
 	
 	
