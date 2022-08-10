@@ -64,5 +64,10 @@ public class PackageController {
 		return service.savePackages(packages);
 
 	}
+	
+	@GetMapping("/status={id}")
+	public List<Package> getByStatus(@PathVariable int id){
+		return repository.findByStatusId(id);
+	}
 
 }
