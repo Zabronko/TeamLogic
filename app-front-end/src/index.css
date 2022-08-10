@@ -17,3 +17,13 @@ code {
 .warehouses td {
   text-align: center;
 }
+
+.CurrentJobInfo {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.CurrentJobInfo *{
+  margin: 0;
+  padding: 0
+}
