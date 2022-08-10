@@ -129,11 +129,23 @@ public class GenericService {
 		String username = user.getUsername();
 		user.setCustomer(customerRepository.save(user.getCustomer()));
 		
-		int userId = user.getCustomer().getId();
+		int customerId = user.getCustomer().getId();
 		
 		String userSql = "insert into users values(?, ?, true, ?)";
 		String authSql = "insert into authorities values(?, 'ROLE_USER')";
-		jdbcTemplate.update(userSql, new Object[] { username, hash, userId}, new int[] { Types.VARCHAR, Types.VARCHAR, Types.INTEGER });
+		jdbcTemplate.update(userSql, new Object[] { username, hash, customerId}, new int[] { Types.VARCHAR, Types.VARCHAR, Types.INTEGER });
+		jdbcTemplate.update(authSql, new String[] { username }, new int[] { Types.VARCHAR });
+		
+	}
+	
+	// Apply for Driver, set enabled as false initially
+	public void applyDriver(User user) {
+		String hash = passwordEncoder.encode(user.getPassword());
+		String username = user.getUsername();
+		
+		String userSql = "insert into users(username,password,enabled) values(?, ?, false)";
+		String authSql = "insert into authorities values(?, 'ROLE_DRIVER')";
+		jdbcTemplate.update(userSql, new Object[] { username, hash}, new int[] { Types.VARCHAR, Types.VARCHAR });
 		jdbcTemplate.update(authSql, new String[] { username }, new int[] { Types.VARCHAR });
 		
 	}
