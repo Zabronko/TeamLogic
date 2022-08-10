@@ -1,5 +1,6 @@
 package com.TeamLogic.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,18 @@ public class PackageController {
 		System.out.println(Json);
 		//return service.updateAllPackages(warehouseId, packages);
 	}
+	
+	@PutMapping("/Driver")
+	public List<Package> updateAllDriver(@RequestBody() List<Package> packages) {
+		List<Package> foundPackages = new ArrayList<>();
+		for(Package p:packages) {
+			foundPackages.add(repository.findById(p.getId()).get());
+		}
+		for(int i=0;i<packages.size();i++) {
+			foundPackages.get(i).setLastCheckIn(packages.get(i).getLastCheckIn());
+		}
+		return repository.saveAll(foundPackages);
+	}
 
 	@GetMapping("/customer{id}")
 	public ResponseEntity<?> getPackagesByCustomerId(@PathVariable int id) {
@@ -52,7 +65,6 @@ public class PackageController {
 		return service.savePackage(pack);
 	}
 	
-
 	@GetMapping("/packageId={id}")
 	public int getWarehouseByPackageId(@PathVariable int id) {
 		Package pack = repository.getReferenceById(id);

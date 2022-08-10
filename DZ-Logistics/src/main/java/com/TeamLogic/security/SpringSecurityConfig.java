@@ -58,6 +58,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		.mvcMatchers("/customers/**").hasAnyRole("ADMIN", "USER")
 		.mvcMatchers("/customer/packages").hasAnyRole("USER")
 		.mvcMatchers("/packages/customer**").hasAnyRole("ADMIN","USER")
+		.mvcMatchers("/packages/Driver").hasAnyRole("DRIVER")
 		.mvcMatchers("/packages/new**").hasAnyRole("USER")
 		.mvcMatchers("/packages/**").hasAnyRole("ADMIN")
 		.mvcMatchers("/**").permitAll()
