@@ -41,6 +41,9 @@ public class Package {
 	@OneToOne()
 	@JoinColumn(name="statusId")
 	private Status status;
+	
+	@Column(name="LastCheckIn")
+	private String lastCheckIn;
 
 	public Package() {
 		super();
@@ -108,6 +111,13 @@ public class Package {
 		this.status = status;
 	}
 
+	public String getLastCheckIn() {
+		return lastCheckIn;
+	}
+
+	public void setLastCheckIn(String lastCheckIn) {
+		this.lastCheckIn = lastCheckIn;
+	}
 
 	@Override
 	public String toString() {

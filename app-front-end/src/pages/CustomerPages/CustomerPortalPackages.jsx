@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { PackageList } from "../components/Packages/PackageList";
+import { PackageList } from "../../components/Packages/PackageList";
 
 export const CustomerPortalPackages = () => {
 

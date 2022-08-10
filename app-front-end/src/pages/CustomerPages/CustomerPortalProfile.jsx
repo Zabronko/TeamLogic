@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card } from "react-bootstrap";
-import { EditCustomer } from "../components/Customers/EditCustomer";
+import { EditCustomer } from "../../components/Customers/EditCustomer";
 import { useCookies } from "react-cookie";
 
 export const CustomerPortalProfile = () => {

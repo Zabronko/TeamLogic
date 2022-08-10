@@ -5,6 +5,9 @@ import { Navigation } from './components/Navigation';
 import { useCookies } from "react-cookie";
 import axios from 'axios';
 import {useEffect} from 'react';
+import { CurrentJob } from './components/Driver/CurrentJob';
+import { GetAJob } from './components/Driver/GetAJob';
+import { PortalHome } from './components/Driver/PortalHome';
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies('Authority');
@@ -87,6 +90,35 @@ function App() {
             <Route path="/CustomerProfile" element={<CustomerPortalProfile />} />
             <Route path="/CustomerPackages" element={<CustomerPortalPackages />} />
             <Route path="/CustomerOrder" element={<CustomerOrderPage />} />
+            <Route path="/*" element={<Home />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </>
+    );
+  }else if (cookies["Authority"] === "ROLE_DRIVER") {
+    return (
+      <>
+        <BrowserRouter>
+          <Navigation>
+            <Navbar.Brand href="/">DZ logistics</Navbar.Brand>
+            <Container fluid>
+              <Nav as="h3" variant="tabs" >
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/Driver/PortalHome">Portal</Nav.Link>
+                <Nav.Link href="/Driver/CurrentJob">Current Job</Nav.Link>
+                <Nav.Link href="/Driver/GetAJob">Get A Job</Nav.Link>
+              </Nav>
+              <Nav>
+                <Button onClick={() => {logout()}} href="/" variant="outline-secondary">Logout</Button>
+              </Nav>
+            </Container>
+          </Navigation>
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Driver/PortalHome" element={<PortalHome />} />
+            <Route path="/Driver/CurrentJob" element={<CurrentJob />} />
+            <Route path="/Driver/GetAJob" element={<GetAJob />} />
             <Route path="/*" element={<Home />}></Route>
           </Routes>
         </BrowserRouter>

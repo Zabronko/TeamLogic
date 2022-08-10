@@ -1,4 +1,4 @@
-import { WarehouseOverview } from "../components/Warehouses/WarehouseOverview"
+import { WarehouseOverview } from "../../components/Warehouses/WarehouseOverview"
 import {Card} from 'react-bootstrap'
 
 export const WarehouseInfo = () => {
