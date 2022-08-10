@@ -12,16 +12,23 @@ export const Truck = ({ truck, warehouse, mode }) => {
     const [status,setStatus] = useState(truck.status.id)
     const [cookies, setCookie] = useCookies();
     const history = useNavigate()
+    const [tookJob, setTookJob] = useState(false);
 
     useEffect(() => {
 
     },[])
 
     const handleDriverTakingJob = () => {
-        truck.status.id = 2
-        axios.post(`http://localhost:8080/Driver/truck/${truck.id}?username=${cookies['username']}`)
-        .then(res => console.log(res.data))
-        //history('Driver/CurrentJob');
+        if(tookJob) {
+            truck.status.id = 2
+            axios.post(`http://localhost:8080/Driver/truck/${truck.id}?username=${cookies['username']}&statusId=${truck.status.id}`)
+            .then(res => console.log(res.data))
+            console.log(warehouse);
+            truck.warehouse = null;
+            setCookie('JobWarehouse', `${warehouse.city},${warehouse.state}`);
+            console.log(cookies['JobWarehouse'])
+            window.location.href = 'http://localhost:3000/Driver/CurrentJob'
+        }
     }
 
     if(mode === 'read') {
@@ -60,7 +67,7 @@ export const Truck = ({ truck, warehouse, mode }) => {
                 <td>
                     {`${truck.packages[0].customer.city},${truck.packages[0].customer.state}`}
                 </td>
-                <td><Button style={{backgroundColor:"white", color:"black"}} onClick={handleDriverTakingJob()}>Take Job</Button></td>
+                <td><Button style={{backgroundColor:"white", color:"black"}} onClick={() => {handleDriverTakingJob(); setTookJob(true)}}>Take Job</Button></td>
             </tr>
         );
     }
