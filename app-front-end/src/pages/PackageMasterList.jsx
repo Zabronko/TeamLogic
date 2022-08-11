@@ -40,7 +40,7 @@ export const PackageMasterList = () => {
                         <th>ID</th>
                         <th>Description</th>
                         <th>Customer</th>
-                        <th>Status  <DropdownButton  title="filter" >
+                        <th>Status  <DropdownButton variant="outline-secondary" size="sm" title="filter" >
                                         <Dropdown.Item onClick={() => filter(1)}>Idle</Dropdown.Item>
                                         <Dropdown.Item onClick={() => filter(2)}>Driving</Dropdown.Item>
                                         <Dropdown.Item onClick={() => filter(3)}>On Truck</Dropdown.Item>
