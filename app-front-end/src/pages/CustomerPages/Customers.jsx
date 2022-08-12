@@ -13,9 +13,8 @@ export const Customers = () => {
 
   return (
     <>
-    <Card style={{width: "80%", alignContent:"center", marginLeft:"10%"}}>
-    </Card>
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
+      <h1 style={{textAlign:'center'}}>Customers</h1>
       <Card.Body>
         <CustomerComponent customers={customers} />
       </Card.Body>

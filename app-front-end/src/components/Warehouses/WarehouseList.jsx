@@ -21,7 +21,7 @@ export const WarehouseList = () => {
     }
 
     return (
-        <Card style={{width:"80%", marginLeft:"10%", borderRadius:"25px", border:"2px solid LightGray", alignItems:"center"}}>
+        <Card style={{width:"80%", marginLeft:"10%", alignItems:"center"}}>
             <h1 style={{alignText:"center"}}>Warehouses</h1>
             <Table striped bordered hover className="warehouses">
                 <thead>

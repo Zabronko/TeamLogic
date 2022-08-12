@@ -34,7 +34,7 @@ function App() {
 
   if (cookies["Authority"] === "ROLE_ADMIN") {
     return (
-      <>
+      <div className='Application'>
         <BrowserRouter>
           <Navigation>
             <Navbar.Brand href="/">DZ logistics</Navbar.Brand>
@@ -64,7 +64,7 @@ function App() {
 
           </Routes>
         </BrowserRouter>
-      </>
+      </div>
     );
   } else if (cookies["Authority"] === "ROLE_USER") {
     return (
@@ -126,11 +126,11 @@ function App() {
     );
   } else if (cookies["Authority"] === undefined) {
     return (
-      <>
-        <BrowserRouter>
-          <Navigation>
+      <div className='Application'>
+        <BrowserRouter >
+          <Navigation className="mynavbar">
             <Navbar.Brand href="/">DZ logistics</Navbar.Brand>
-            <Container fluid>
+            <Container fluid >
               <Nav as="h3" variant="tabs" >
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/apply">Apply</Nav.Link>
@@ -150,7 +150,7 @@ function App() {
             <Route path="/*" element={<Home />}></Route>
           </Routes>
         </BrowserRouter>
-      </>
+      </div>
     );
   }
 }

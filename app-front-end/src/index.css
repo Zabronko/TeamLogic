@@ -27,3 +27,63 @@ code {
   margin: 0;
   padding: 0
 }
+
+/*all around application styling*/
+.Application {
+  color: black;
+  min-height: 100vh;
+  background-color: lightgray !important;
+}
+
+html {
+  color: black;
+  min-height: 100vh;
+  background-color: lightgray !important;
+}
+
+/*card styling*/
+.card {
+  background-color: lightgray !important;
+  border: 3px solid blue !important;
+  border-radius: 8px !important;
+}
+
+/*navbar styling*/
+div .navbar {
+  background-color: lightgray !important;
+  border: 3px solid blue;
+  border-radius: 8px !important;
+}
+
+div .navbar * {
+  background-color: lightgray !important;
+  border-radius: 8px !important;
+}
+
+div .navbar .btn {
+  border: 3px solid blue;
+  color: black
+}
+
+nav {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-tabs *{
+  border-right: 3px solid blue !important;
+}
+
+.mynavbar .navbar-brand:hover, a:hover{
+  background-color: blue !important;
+  color: white !important;
+}
+
+.navbar-brand {
+  height: 40px;
+  padding: 0;
+  padding-right: 1% !important;
+  margin:0;
+  border-right: 3px solid blue !important;
+}
+/*-----------------*/
