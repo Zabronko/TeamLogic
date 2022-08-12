@@ -54,14 +54,14 @@ html {
 /*card styling*/
 .card {
   background-color: lightgray !important;
-  border: 3px solid blue !important;
+  border: 1px solid blue !important;
   border-radius: 8px !important;
 }
 
 /*navbar styling*/
 div .navbar {
   background-color: lightgray !important;
-  border: 3px solid blue;
+  border: 1px solid blue;
   border-radius: 8px !important;
 }
 
@@ -71,7 +71,7 @@ div .navbar * {
 }
 
 div .navbar .btn {
-  border: 3px solid blue;
+  border: 1px solid blue;
   color: black
 }
 
@@ -81,7 +81,7 @@ nav {
 }
 
 .nav-tabs *{
-  border-right: 3px solid blue !important;
+  border-right: 1px solid blue !important;
 }
 
 .mynavbar .navbar-brand:hover, a:hover{

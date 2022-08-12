@@ -131,7 +131,7 @@ public class GenericService {
 		
 		int customerId = user.getCustomer().getId();
 		
-		String userSql = "insert into users values(?, ?, true, ?)";
+		String userSql = "insert into users(username, password, enabled, customerId) values(?, ?, true, ?)";
 		String authSql = "insert into authorities values(?, 'ROLE_USER')";
 		jdbcTemplate.update(userSql, new Object[] { username, hash, customerId}, new int[] { Types.VARCHAR, Types.VARCHAR, Types.INTEGER });
 		jdbcTemplate.update(authSql, new String[] { username }, new int[] { Types.VARCHAR });

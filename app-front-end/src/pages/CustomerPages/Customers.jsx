@@ -1,4 +1,4 @@
-import {Card, Form, Button} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import { CustomerComponent } from '../../components/Customers/CustomerComponent';
 import { useState, useEffect } from "react";
 import axios from "axios";

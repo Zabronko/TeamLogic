@@ -6,9 +6,9 @@ import { Container, Card, CardGroup} from "react-bootstrap";
 export const Home = () => {
 
   return (
-    <div className="px-4 py-5 my-5 text-center" >
+    <div className="px-4 py-5 my-5 text-center" style={{opacity: 0.8}}>
       
-    <Card style={{width: "80%", textAlign: "center", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
+    <Card style={{width: "75%", textAlign: "center", alignContent:"center", marginLeft:"12.5%", marginBottom:"10%"}}>
         <Card.Body >
           <div className='h3'>
            Welcome to DZ Logistics
@@ -18,7 +18,7 @@ export const Home = () => {
             
               <div className='h3'>Servicable States</div>
             
-            <CardGroup >
+            <CardGroup>
             <Card><Card.Body>Texas</Card.Body></Card>
             <Card><Card.Body>Oklahoma</Card.Body></Card>
             <Card><Card.Body>Arkansas</Card.Body></Card>

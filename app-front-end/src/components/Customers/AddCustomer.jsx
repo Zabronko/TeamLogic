@@ -4,8 +4,6 @@ import {Form, Button, Row, Col} from 'react-bootstrap';
 import { RegisterCustomerModal } from "./RegisterCustomerModal";
 
 
-
-
 export const AddCustomer = () => {
     const [modalShow, setModalShow] = useState(false);
 
