@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card";
+import {Card, Form, Button} from "react-bootstrap";
 import { CustomerComponent } from '../../components/Customers/CustomerComponent';
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -6,10 +6,13 @@ import axios from "axios";
 export const Customers = () => {
   const [customers, setCustomers] = useState([]);
 
+
   useEffect(() => {
       axios.get('http://localhost:8080/customers')
       .then(res => setCustomers(res.data));
   },[]);
+
+
 
   return (
     <>

@@ -133,7 +133,7 @@ function App() {
             <Container fluid >
               <Nav as="h3" variant="tabs" >
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/apply">Apply</Nav.Link>
+                <Nav.Link href="/apply">Careers</Nav.Link>
               </Nav>
               <Nav>
                 <Button href="/signin" variant="outline-secondary">Sign In</Button>

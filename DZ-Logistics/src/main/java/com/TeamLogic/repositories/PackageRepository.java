@@ -15,5 +15,6 @@ import com.TeamLogic.beans.Status;
 public interface PackageRepository extends JpaRepository<Package, Integer>{
 	
 	public List<Package> findByCustomerId(int id);
+	public List<Package> findByStatusId(int id);
 	
 }

@@ -61,6 +61,9 @@ public class CustomerController {
 		return service.getCustomerPackagesWithUsername(username);
 	}
 
-
+	@GetMapping("/like")
+	public List<Customer> findNameLike(@RequestParam String name){
+		return repository.findByNameLike("%" + name + "%");
+	}
 
 }

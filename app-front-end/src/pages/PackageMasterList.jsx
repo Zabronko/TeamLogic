@@ -1,21 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Table, Card } from 'react-bootstrap';
+import { Table, Card, DropdownButton, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
 
 export const PackageMasterList = () => {
     const [packs, setPacks] = useState([]);
     const navigate = useNavigate();
+    
 
     const handleClick = async (pack) => {
         axios.get(`http://localhost:8080/packages/packageId=${pack.id}`)
         .then(res => navigate(`/warehouses/${res.data}`));
 
     }
+    const filter = async (id) => {
+        axios.get(`http://localhost:8080/packages/status=${id}`)
+        .then(res => setPacks(res.data));
+
+    }
 
     useEffect(() => {
-        axios.get('http://localhost:8080/packages')
+        axios.get(`http://localhost:8080/packages`)
             .then(res => {
                 console.log(res.data);
                 setPacks(res.data)
@@ -33,7 +40,14 @@ export const PackageMasterList = () => {
                         <th>ID</th>
                         <th>Description</th>
                         <th>Customer</th>
-                        <th>status</th>
+                        <th>Status  <DropdownButton variant="outline-secondary" size="sm" title="filter" >
+                                        <Dropdown.Item onClick={() => filter(1)}>Idle</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => filter(2)}>Driving</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => filter(3)}>On Truck</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => filter(4)}>In Route</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => filter(5)}>Delivered</Dropdown.Item>
+                                    </DropdownButton>
+                        </th>
 
                     </tr>
                 </thead>

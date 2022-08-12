@@ -1,6 +1,7 @@
 package com.TeamLogic.repositories;
 
 import java.lang.annotation.Repeatable;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 	@Query("Select cust, u from Customer cust, User u where u.username =?1 and u.customer = cust")
 	public Customer findByUsername(String userName);
+
+	public List<Customer> findByNameLike(String string);
 	
 
 }
