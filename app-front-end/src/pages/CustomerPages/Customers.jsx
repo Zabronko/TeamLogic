@@ -1,6 +1,6 @@
 import {Card, Form, Button} from "react-bootstrap";
 import { CustomerComponent } from '../../components/Customers/CustomerComponent';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const Customers = () => {
@@ -16,8 +16,7 @@ export const Customers = () => {
 
   return (
     <>
-    <Card style={{width: "20%", alignContent:"center", marginLeft:"40%"}}>
-    </Card>
+    <h1 style={{ textAlign: "center" }}>Customers</h1>
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
       <Card.Body>
         <CustomerComponent customers={customers} />
