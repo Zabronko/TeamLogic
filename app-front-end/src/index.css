@@ -33,12 +33,22 @@ code {
   color: black;
   min-height: 100vh;
   background-color: lightgray !important;
+  background-image: url('./BGImage.jpg');
+  background-size: cover;
 }
 
-html, #root {
+html {
+  color: black;
+  max-height: 100%;
+}
+
+#root {
   color: black;
   min-height: 100vh;
-  background-color: lightgray !important;
+}
+
+.Application .table {
+  background-color: lightgrey;
 }
 
 /*card styling*/
