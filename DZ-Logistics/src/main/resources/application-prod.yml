@@ -10,15 +10,16 @@ server:
 spring:    
   # use data.sql and schema.sql ONLY when using H2 database
   # data-{platform}.sql"
- sql:
-   init:
-     platform: h2
+   datasource:
+    url: jdbc:mysql://localhost:3306/logistics
+    username: root
+    password: root
 
- jpa:
-   show-sql: true
+   jpa:
+    show-sql: true
     
    # please use Pascal_Case so you don't need this:
-   hibernate:
+    hibernate:
      naming:
        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
      ddl-auto: none
