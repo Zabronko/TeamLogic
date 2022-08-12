@@ -58,7 +58,7 @@ export const EditCustomer = ({customer, setCustomer,renderEditCustomer, setRende
       <option>TX</option>
       </ Form.Select>
       <Button variant="success" type="submit" >
-        Update Customer
+        Update Information
         </Button>
         <Button variant="danger" onClick={() => setRenderEditCustomer(!renderEditCustomer)}  >
         Cancel Update

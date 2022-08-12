@@ -1,5 +1,5 @@
 
-import { Container, Card, CardGroup } from "react-bootstrap";
+import { Container, Card, CardGroup} from "react-bootstrap";
 
 
 
@@ -7,6 +7,7 @@ export const Home = () => {
 
   return (
     <div className="px-4 py-5 my-5 text-center" >
+      
     <Card style={{width: "80%", textAlign: "center", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
         <Card.Body >
           <div className='h3'>
