@@ -17,7 +17,7 @@ export const CustomerPortalProfile = () => {
 
   return (
     <>
-    <h1 style={{ textAlign: "center" }}>Customer Profile</h1>
+    <h1 style={{ textAlign: "center", color:'white' }}>Customer Profile</h1>
     <Card style={{width: "60%", alignContent:"center", marginLeft:"20%"}}>
     {!renderEditCustomer && <> 
     <Card.Header >Information</Card.Header>
