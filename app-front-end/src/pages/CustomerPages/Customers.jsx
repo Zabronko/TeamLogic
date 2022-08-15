@@ -29,10 +29,10 @@ export const Customers = () => {
     <>
     <Card style={{width: "80%", alignContent:"center", marginLeft:"10%", marginBottom:"10%"}}>
       <h1 style={{textAlign:'center'}}>Customers</h1>
-      <Form onSubmit={search} className="d-flex">
+      <Form style={{width: "30%",marginLeft:"1%"}} onSubmit={search} className="d-flex">
                   <Form.Control
                     type="search"
-                    placeholder="Search Customer Name"
+                    placeholder="Search Customer by Name"
                     className="me-2"
                     aria-label="Search"
                     ref={queryRef}
