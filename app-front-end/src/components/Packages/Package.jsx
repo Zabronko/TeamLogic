@@ -27,7 +27,7 @@ export const Package = ({ mode, pack, warehouse, type }) => {
                 </Form></td>
                 <td>{warehouse.city},{warehouse.state}</td>
                 <td>
-                    {pack.status.id === 1?
+                    {pack.status.id === 1 | pack.status.id === 3?
                     <select defaultValue={pack.truck !== undefined ? pack.truck.id : selectedRef.current} onChange={(e) => {e.target.value !== "In Warehouse"?pack.truck = warehouse.trucks.filter(data => data.id === parseInt(e.target.value))[0]:pack.truck=undefined}}>
                     <option value="In Warehouse">In Warehouse</option>
                     {warehouse.trucks.map((truck) => {
