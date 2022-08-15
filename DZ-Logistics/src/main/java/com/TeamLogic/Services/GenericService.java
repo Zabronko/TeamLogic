@@ -195,4 +195,8 @@ public class GenericService {
 		
 	}
 
+	public Warehouse findWarehouseByLocation(String city,String state) {
+		return warehouseRepository.findByLocation(city,state);
+	}
+
 }

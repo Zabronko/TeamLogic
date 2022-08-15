@@ -43,18 +43,38 @@ public class UserController {
 	}
 	
 
-	@PostMapping("/Driver/truck/{id}")
-	public ResponseEntity<?> DriverSaveTruck(@PathVariable int id, @RequestParam String username, @RequestParam int statusId) {
+	@PostMapping("/Driver/take/{id}")
+	public ResponseEntity<?> DriverTakeJob(@PathVariable int id, @RequestParam String username, @RequestParam int truckId) {
 		User user = repo.findById(username).get();
-		Truck truck = truckRepository.findById(id).get();
-		truck.setStatus(statusRepository.findById(statusId).get());
-		if(truck.getStatus().getId() == 2) {
-			user.setTruck(truck);
-		}else {
-			user.setTruck(null);
-		}
+		Truck truck = truckRepository.findById(truckId).get();
+		truck.setStatus(statusRepository.findById(2).get());
+		user.setTruck(truck);
+		
 		for(Package p:truck.getPackages()) {
 			p.setStatus(truck.getStatus());
+		}
+		truckRepository.save(truck);
+		repo.save(user);
+		user.setPassword(null);
+		return ResponseEntity.ok(user);
+	}
+	
+	@PostMapping("/Driver/complete/{id}")
+	public ResponseEntity<?> DriverCompleteJob(@PathVariable int id, @RequestParam String username,@RequestParam String from, @RequestParam int truckId) {
+		User user = repo.findById(username).get();
+		Truck truck = truckRepository.findById(truckId).get();
+		truck.setStatus(statusRepository.findById(1).get());
+		user.setTruck(null);
+		
+		for(Package p:truck.getPackages()) {
+			if(from.equals(p.getCustomer().getCity()+","+p.getCustomer().getState())) {
+				p.setStatus(statusRepository.findById(5).get());
+				p.setTruck(null);
+				p.setWarehouse(null);
+			}else {
+				p.setWarehouse(service.findWarehouseByLocation(p.getCustomer().getCity(),p.getCustomer().getState()));
+				p.setStatus(statusRepository.findById(1).get());
+			}
 		}
 		truckRepository.save(truck);
 		repo.save(user);

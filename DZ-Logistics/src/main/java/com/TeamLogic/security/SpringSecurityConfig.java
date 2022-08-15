@@ -71,10 +71,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         .clearAuthentication(true)
         .deleteCookies("JSESSIONID")
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/")
-        .and()
-        .rememberMe().tokenValiditySeconds(2592000) // 2592000 = 30 days in Seconds
-        .rememberMeParameter("rememberMe");
-		
+        .logoutSuccessUrl("/");
+        
 	}
 }

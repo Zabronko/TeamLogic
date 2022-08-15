@@ -20,9 +20,11 @@ function App() {
     })
       .then(res => {
         removeCookie("Authority")
-        setCookie("JSESSIONID",undefined)
+        removeCookie('JSESSIONID')
+        removeCookie('Authentication')
         removeCookie("Customer")
         removeCookie("username")
+        window.location.href = "http://localhost:3000"
       })
   }
 

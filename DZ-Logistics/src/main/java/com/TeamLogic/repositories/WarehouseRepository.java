@@ -12,4 +12,7 @@ import com.TeamLogic.beans.Warehouse;
 @Repository
 public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
 
+	@Query("From Warehouse war where war.city = ?1 and war.state = ?2")
+	public Warehouse findByLocation(String City, String State);
+
 }

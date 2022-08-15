@@ -21,7 +21,7 @@ export const Truck = ({ truck, warehouse, mode }) => {
     const handleDriverTakingJob = () => {
         if(tookJob) {
             truck.status.id = 2
-            axios.post(`http://localhost:8080/Driver/truck/${truck.id}?username=${cookies['username']}&statusId=${truck.status.id}`)
+            axios.post(`http://localhost:8080/Driver/take/${truck.id}?username=${cookies['username']}&truckId=${truck.id}`)
             .then(res => console.log(res.data))
             console.log(warehouse);
             truck.warehouse = null;

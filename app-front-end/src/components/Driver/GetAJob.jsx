@@ -36,7 +36,7 @@ export const GetAJob = () => {
         })
         return (
             <Card>
-                <h1>Jobs Available</h1>
+                <h1 style={{textAlign: 'center'}}>Jobs Available</h1>
                 <Table striped bordered hover style={{ width: "98%", margin: "1%" }}>
                     <thead>
                         <tr>

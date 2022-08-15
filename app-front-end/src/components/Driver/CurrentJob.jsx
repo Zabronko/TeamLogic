@@ -41,7 +41,7 @@ export const CurrentJob = () => {
 
     const handleDriverCompleteJob = () => {
         truck.status.id = 5
-        axios.post(`http://localhost:8080/Driver/truck/${truck.id}?username=${cookies['username']}&statusId=${truck.status.id}`)
+        axios.post(`http://localhost:8080/Driver/complete/${truck.id}?username=${cookies['username']}&from=${cookies['JobWarehouse']}&truckId=${truck.id}`)
         .then(res => console.log(res.data))
         removeCookie('JobWarehouse')
         window.location.href = 'http://localhost:3000'
