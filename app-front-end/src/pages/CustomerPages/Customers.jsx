@@ -32,7 +32,7 @@ export const Customers = () => {
       <Form onSubmit={search} className="d-flex">
                   <Form.Control
                     type="search"
-                    placeholder="Search"
+                    placeholder="Search Customer Name"
                     className="me-2"
                     aria-label="Search"
                     ref={queryRef}
