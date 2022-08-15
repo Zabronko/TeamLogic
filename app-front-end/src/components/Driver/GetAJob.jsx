@@ -28,7 +28,7 @@ export const GetAJob = () => {
     if (warehouses.length >0) {
         warehouses.forEach((warehouse) => {
             warehouse.trucks.forEach((truck) => {
-                if(truck.status.id === 1 & truck.packages.length > 5) {
+                if(truck.status.id === 1 & truck.packages.length >= 5) {
                     truck.warehouse = warehouse;
                     trucks.push(truck);
                 }

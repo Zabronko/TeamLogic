@@ -37,7 +37,7 @@ export const AddTruckForm = () => {
                     <Form.Select name="warehouse" ref={warehouseRef}  required={true} defaultValue="warehouse">
                         <option value="">warehouse</option>
                         <option value="5">Little Rock, AR</option>
-                        <option value="9">Little Rock, AZ</option>
+                        <option value="9">Pheonix, AZ</option>
                         <option value="7">New Orleans, LA</option>
                         <option value="8">Shreveport, LA</option>
                         <option value="6">Albuquerque, NM</option>
