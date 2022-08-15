@@ -1,6 +1,5 @@
 package com.TeamLogic.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -74,9 +73,5 @@ public class UserController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping("/use")
-	public List<User> getAll(){
-		return repo.findAll();
-	}
 
 }

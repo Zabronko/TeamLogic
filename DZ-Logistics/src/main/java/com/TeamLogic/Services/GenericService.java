@@ -43,8 +43,6 @@ public class GenericService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
